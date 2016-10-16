@@ -102,6 +102,6 @@ if __name__ == "__main__":
     app.secret_key = str(uuid.uuid4())
     app.debug=CONFIG.DEBUG
     app.logger.setLevel(logging.DEBUG)
-    app.run(port=CONFIG.PORT)
+    app.run(port=CONFIG.PORT, host="0.0.0.0")
 
     
