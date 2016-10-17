@@ -13,9 +13,10 @@ from acp_calc import AcpBrevet
 
 def test_new_brevet():
     """
-    Nothing is present in an empty word list
+    Testing initializing AcpBrevet
     """
     brevet = AcpBrevet( 1000, arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm') )
     assert brevet.brev_length == 1000
     assert brevet.brev_start == arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm')
+    print(brevet.get_control_times())
     #assert brevet.get_control_times() == []#[{"discription":"","distance":0, "open":brevet.brev_start, "close":brevet.brev_start.replace(hour=+1)}]
