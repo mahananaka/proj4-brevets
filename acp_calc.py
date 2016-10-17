@@ -77,6 +77,7 @@ class AcpBrevet():
 			hrs =+ 1
 			mins =- 60
 
+		print(hrs + " and " + mins)
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
 	def get_control_times(self):
@@ -85,7 +86,6 @@ class AcpBrevet():
 			cp["open"] = self.calc_control_time(cp["distance"],CONTROL_MAX)
 			cp["close"] = self.calc_control_time(cp["distance"],CONTROL_MIN)
 
-		print(self.controles)
 		return self.controles
 
 
