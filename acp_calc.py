@@ -73,11 +73,13 @@ class AcpBrevet():
 			else:
 				break
 
+		print("Before loop: {}h {}m".format(hrs,mins))
+
 		while(mins > 59):
 			hrs =+ 1
 			mins =- 60
 
-		print("{}h {}m".format(hrs,mins))
+		print("After loop: {}h {}m".format(hrs,mins))
 
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
