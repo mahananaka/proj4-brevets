@@ -73,6 +73,10 @@ class AcpBrevet():
 			else:
 				break
 
+		while(minutes > 59):
+			hours =+ 1
+			minutes =- 60
+
 		return self.brev_start.replace(hours=+hours,minute=+minutes)
 
 	def get_control_times(self):
