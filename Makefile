@@ -53,6 +53,9 @@ service:	env
 test:	env
 	$(INVENV) nosetests
 
+test:	env
+	$(INVENV) nosetests -v
+
 
 ##
 ## Preserve virtual environment for git repository
