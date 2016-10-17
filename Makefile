@@ -54,7 +54,7 @@ test:	env
 	$(INVENV) nosetests
 
 testv:	env
-	$(INVENV) nosetests -nosecapture
+	$(INVENV) nosetests --nosecapture
 
 
 ##
