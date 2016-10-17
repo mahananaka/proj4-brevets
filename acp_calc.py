@@ -85,6 +85,7 @@ class AcpBrevet():
 			cp["open"] = self.calc_control_time(cp["distance"],CONTROL_MAX)
 			cp["close"] = self.calc_control_time(cp["distance"],CONTROL_MIN)
 
+		print(self.controles)
 		return self.controles
 
 
