@@ -8,7 +8,7 @@ import datetime # But we still need time
 from dateutil import tz  # For interpreting local times
 
 # module we are testing
-from apc_calc import AcpBrevet
+from acp_calc import AcpBrevet
 
 
 def test_empty_vocab():
