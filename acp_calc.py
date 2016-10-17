@@ -41,14 +41,14 @@ class AcpBrevet():
 		self.controles = []
 
 		#make the initial controle point
-		self.controles.append(make_controle_point(0,""))
+		self.controles.append(self.make_controle_point(0,""))
 
 	def add_controle_point(self,controle):
 		self.controles.append(controle)
 
 	def update_controle_point(control_num, distance, descriptor):
 		if control_num <= len(self.controles):
-			controle_point = make_controle_point(distance,descriptor)
+			controle_point = self.make_controle_point(distance,descriptor)
 			self.controles[control_num-1] = controle_point
 
 	def calc_control_time(self,distance,chart):
