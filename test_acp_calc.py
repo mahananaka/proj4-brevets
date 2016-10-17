@@ -31,6 +31,6 @@ def test_add_control():
 	brevet.add_controle_point(cp)
 
 	array_compare = [{"description":"","distance": 0, "open":arrow.get('2016-11-10T08:00:00+00:00'), "close":arrow.get('2016-11-10T09:00:00+00:00')},
-					 {"description":"First Checkpoint","distance": 0, "open":arrow.get('2016-11-10T10:56:00+00:00'), "close":arrow.get('2016-11-10T14:40:00+00:00')}]
+					 {"description":"First Checkpoint","distance": 100, "open":arrow.get('2016-11-10T10:56:00+00:00'), "close":arrow.get('2016-11-10T14:40:00+00:00')}]
 
 	assert brevet.get_control_times() == array_compare
