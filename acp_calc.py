@@ -76,7 +76,7 @@ class AcpBrevet():
 
 
 		if(mins >= MINUTES_PER_HOUR):
-			hrs = hr + int(mins / MINUTES_PER_HOUR)
+			hrs = hrs + int(mins / MINUTES_PER_HOUR)
 			mins = mins % MINUTES_PER_HOUR
 			print("{}h {}m".format(hrs,mins))
 
