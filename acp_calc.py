@@ -77,9 +77,10 @@ class AcpBrevet():
 
 	def get_control_times(self):
 		#update open and close times
-		for ctrlpnt in self.controles:
-			ctrlpnt["open"] = self.calc_control_time(ctrlpnt["distance"],CONTROL_MAX)
-			ctrlpnt["close"] = self.calc_control_time(cntrlpnt["distance"],CONTROL_MIN)
+		for cp in self.controles:
+			print(cp)
+			#ctrlpnt["open"] = self.calc_control_time(ctrlpnt["distance"],CONTROL_MAX)
+			#ctrlpnt["close"] = self.calc_control_time(cntrlpnt["distance"],CONTROL_MIN)
 
 		return self.controles
 
