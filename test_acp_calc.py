@@ -52,8 +52,8 @@ def test_update_control_point():
 
 	assert brevet.get_control_times() == should_be
 
-	brevet.update_controle_point(0,0,"Start Line")
-	brevet.update_controle_point(1,350,"1st Checkpoint")
+	brevet.update_controle_point(1,0,"Start Line")
+	brevet.update_controle_point(2,350,"1st Checkpoint")
 
 	should_be = [{"description":"Start Line","distance": 0, "open":arrow.get('2016-11-10T08:00:00+00:00'), "close":arrow.get('2016-11-10T09:00:00+00:00')},
 				 {"description":"1st Checkpoint","distance": 350, "open":arrow.get('2016-11-10T18:34:00+00:00'), "close":arrow.get('2016-11-11T07:20:00+00:00')}]
