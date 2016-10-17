@@ -57,7 +57,7 @@ class AcpBrevet():
 			if(chart == CONTROL_MAX):
 				return self.brev_start
 			else:
-				return self.brev_start.replace(hour=+1)
+				return self.brev_start.replace(hours=+1)
 
 		#calculation for controle points after start control
 		remaining_dist = distance
@@ -73,7 +73,7 @@ class AcpBrevet():
 			else:
 				break
 
-		return self.brev_start.replace(hour=+hours,minute=+minutes)
+		return self.brev_start.replace(hours=+hours,minute=+minutes)
 
 	def get_control_times(self):
 		#update open and close times
