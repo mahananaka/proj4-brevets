@@ -75,9 +75,9 @@ class AcpBrevet():
 
 		print("Before loop: {}h {}m".format(hrs,mins))
 
-		while(mins > 59):
-			hrs =+ 1
-			mins =- 60
+		if(mins >= MINUTES_PER_HOUR):
+			hrs =+ int(mins / MINUTES_PER_HOUR)
+			mins =- mins % MINUTES_PER_HOUR
 
 		print("After loop: {}h {}m".format(hrs,mins))
 
