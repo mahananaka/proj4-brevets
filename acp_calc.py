@@ -61,23 +61,23 @@ class AcpBrevet():
 
 		#calculation for controle points after start control
 		remaining_dist = distance
-		hours = 0
-		minutes = 0
+		hrs = 0
+		mins = 0
 
 		for i,(span,speed) in enumerate(chart):
 			if(remaining_dist>0):
 				dist_seg = min(remaining_dist,span)
-				hours = hours + dist_seg / speed
-				minutes = minutes + int(round((dist_seg % speed)*MINUTES_PER_HOUR))
+				hrs = hrs + dist_seg / speed
+				mins = mins + int(round((dist_seg % speed)*MINUTES_PER_HOUR))
 				remaining_dist = remaining_dist - span
 			else:
 				break
 
-		while(minutes > 59):
-			hours =+ 1
-			minutes =- 60
+		while(mins > 59):
+			hrs =+ 1
+			mins =- 60
 
-		return self.brev_start.replace(hours=+hours,minute=+minutes)
+		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
 	def get_control_times(self):
 		#update open and close times
