@@ -80,7 +80,7 @@ class AcpBrevet():
 		for cp in self.controles:
 			cp["open"] = self.calc_control_time(cp["distance"],CONTROL_MAX)
 			cp["close"] = self.calc_control_time(cp["distance"],CONTROL_MIN)
-			print(cp)
+			print(cp["close"].format("MMM DD, YYYY - HH:mm"))
 
 		return self.controles
 
