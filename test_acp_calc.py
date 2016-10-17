@@ -19,4 +19,4 @@ def test_new_brevet():
     assert brevet.brev_length == 1000
 
     assert brevet.brev_start == arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm')
-    assert brevet.get_control_times() == {"description":"","distance": 0}#, "open":brevet.brev_start, "close":brevet.brev_start.replace(hour=+1)}]
+    assert brevet.get_control_times() == {'description':'','distance': 0}#, "open":brevet.brev_start, "close":brevet.brev_start.replace(hour=+1)}]
