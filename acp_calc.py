@@ -66,13 +66,13 @@ class AcpBrevet():
 
 		for i,(span,speed) in enumerate(chart):
 			if(remaining_dist>0):
-				print("r_dist: {}\nhrs: {}\nmins: {}\nspan: {}\nspeed{}".format(remaining_dist,hrs,mins,span,speed))
+				print("r_dist: {}\nhrs: {}\nmins: {}\nspan: {}\nspeed: {}".format(remaining_dist,hrs,mins,span,speed))
 				dist_seg = min(remaining_dist,span)
 				print("dist_seg: {}".format(dist_seg))
 				hrs = int(hrs + dist_seg / speed)
 				mins = mins + int(round((dist_seg % speed)*MINUTES_PER_HOUR))
 				remaining_dist = remaining_dist - span
-				print("r_dist: {}\nhrs: {}\nmins: {}\nspan: {}\nspeed{}".format(remaining_dist,hrs,mins,span,speed))
+				print("r_dist: {}\nhrs: {}\nmins: {}\nspan: {}\nspeed: {}\n\n".format(remaining_dist,hrs,mins,span,speed))
 			else:
 				break
 
