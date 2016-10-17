@@ -11,11 +11,11 @@ from dateutil import tz  # For interpreting local times
 from acp_calc import AcpBrevet
 
 
-def test_empty_vocab():
+def test_new_brevet():
     """
     Nothing is present in an empty word list
     """
     brevet = AcpBrevet( 1000, arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm') )
     assert brevet.brev_length == 1000
     assert brevet.brev_starttime == arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm')
-    assert brevet.output_controles() == [{"discription":"","distance":0, "open":brev_starttime, "close":brev_starttime.replace(hour=+1)}]
+    assert brevet.output_controles() == [{"discription":" ","distance":0, "open":brev_starttime, "close":brev_starttime.replace(hour=+1)}]

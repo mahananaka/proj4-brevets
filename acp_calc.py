@@ -41,7 +41,7 @@ class AcpBrevet():
 		self.controles = []
 
 		#make the initial controle point
-		self.controles.append(self.make_controle_point(0,""))
+		self.controles.append(self.make_controle_point(0," "))
 
 	def add_controle_point(self,controle):
 		self.controles.append(controle)
