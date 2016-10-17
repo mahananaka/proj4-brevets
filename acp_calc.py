@@ -73,13 +73,9 @@ class AcpBrevet():
 			else:
 				break
 
-
-
 		if(mins >= MINUTES_PER_HOUR):
-			hrs = hrs + int(mins / MINUTES_PER_HOUR)
+			hrs += int(mins / MINUTES_PER_HOUR)
 			mins = mins % MINUTES_PER_HOUR
-			print("{}h {}m".format(hrs,mins))
-
 
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
