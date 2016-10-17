@@ -77,7 +77,8 @@ class AcpBrevet():
 			hrs =+ 1
 			mins =- 60
 
-		print(hrs + " and " + mins)
+		print("{}h {}m".format(hrs,mins))
+
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
 	def get_control_times(self):
