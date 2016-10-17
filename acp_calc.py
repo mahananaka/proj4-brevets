@@ -30,7 +30,7 @@ MINUTES_PER_HOUR = 60
 
 class AcpBrevet():
 
-	def __int__(self, length, starttime):
+	def __init__(self, length, starttime):
 
 		self.brev_length = length
 		self.brev_start = starttime #arrow datetime
