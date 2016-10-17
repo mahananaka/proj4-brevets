@@ -65,7 +65,7 @@ class AcpBrevet():
 		if(distance == 0):
 			if(chart == CONTROL_MAX):
 				return self.starttime
-			else
+			else:
 				return self.starttime.replace(hour=+1)
 
 		#calculation for controle points after start control
