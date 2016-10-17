@@ -53,7 +53,7 @@ service:	env
 test:	env
 	$(INVENV) nosetests
 
-test:	env
+testv:	env
 	$(INVENV) nosetests -v
 
 
