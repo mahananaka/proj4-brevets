@@ -67,22 +67,19 @@ class AcpBrevet():
 		for i,(span,speed) in enumerate(chart):
 			if(remaining_dist>0):
 				dist_seg = min(remaining_dist,span)
-				print("dist_seg: {}".format(dist_seg))
 				hrs = int(hrs + dist_seg / speed)
-				print("minutes to add: {}".format(int(round((dist_seg%speed/speed)*MINUTES_PER_HOUR))))
 				mins = mins + int(round((dist_seg%speed/speed)*MINUTES_PER_HOUR))
 				remaining_dist = remaining_dist - span
-				print("r_dist: {}\nhrs: {}\nmins: {}\nspan: {}\nspeed: {}\n\n".format(remaining_dist,hrs,mins,span,speed))
 			else:
 				break
 
-		#print("Before loop: {}h {}m".format(hrs,mins))
+		print("Before loop: {}h {}m".format(hrs,mins))
 
 		while(mins > 59):
 			hrs =+ 1
 			mins =- 60
 
-		#print("After loop: {}h {}m".format(hrs,mins))
+		print("After loop: {}h {}m".format(hrs,mins))
 
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
