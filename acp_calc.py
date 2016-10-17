@@ -73,7 +73,7 @@ class AcpBrevet():
 			else:
 				break
 
-		return self.starttime.replace(hour=+hours,minute=+minutes)
+		return self.brev_start.replace(hour=+hours,minute=+minutes)
 
 	def get_control_times(self):
 		#update open and close times
