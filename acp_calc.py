@@ -68,11 +68,8 @@ class AcpBrevet():
 			if(remaining_dist>0):
 				dist_seg = min(remaining_dist,span)
 				print("dist_seg: {}".format(dist_seg))
-				#hrs = int(hrs + dist_seg / speed)
-				print(divmod(dist_seg,speed))
-				hrs = dist_seg / speed
-				mins = dist_seg % speed
-				#mins = mins + int(round((dist_seg % speed)*MINUTES_PER_HOUR))
+				hrs = int(hrs + dist_seg / speed)
+				mins = mins + int(round((dist_seg/speed - hrs)*MINUTES_PER_HOUR))
 				remaining_dist = remaining_dist - span
 				print("r_dist: {}\nhrs: {}\nmins: {}\nspan: {}\nspeed: {}\n\n".format(remaining_dist,hrs,mins,span,speed))
 			else:
