@@ -46,11 +46,25 @@ class AcpBrevet():
 	def add_controle_point(self,controle):
 		self.controles.append(controle)
 
+
 	def update_controle_point(self, control_num, distance, descriptor):
-		if control_num <= len(self.controles):
+				#number of control points start at 1, but array begins at 0
+		if control_num <= len(self.controles) and control_num > 0:
 			controle_point = self.make_controle_point(distance,descriptor)
 			self.controles[control_num-1] = controle_point
 
+	def get_control_times(self):
+		#update open and close times
+		for cp in self.controles:
+			cp["open"] = self.__calc_control_time(cp["distance"],CONTROL_MAX)
+			cp["close"] = self.__calc_control_time(cp["distance"],CONTROL_MIN)
+
+		print(self.controles)
+		return self.controles
+
+	"""
+	Private members
+	"""
 	def __calc_control_time(self,distance,chart):
 		#when distance 0, this controle is the start line and has a static open and close
 		if(distance == 0):
@@ -78,14 +92,5 @@ class AcpBrevet():
 			mins = mins % MINUTES_PER_HOUR
 
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
-
-	def get_control_times(self):
-		#update open and close times
-		for cp in self.controles:
-			cp["open"] = self.__calc_control_time(cp["distance"],CONTROL_MAX)
-			cp["close"] = self.__calc_control_time(cp["distance"],CONTROL_MIN)
-
-		print(self.controles)
-		return self.controles
 
 
