@@ -30,10 +30,6 @@ MINUTES_PER_HOUR = 60
 
 class AcpBrevet():
 
-	def make_controle_point(distance,descriptor):
-		controle_point = {"description": descriptor, "distance": distance }
-		return controle_point
-
 	def __init__(self, length, starttime):
 
 		self.brev_length = length
@@ -41,12 +37,16 @@ class AcpBrevet():
 		self.controles = []
 
 		#make the initial controle point
-		self.controles.append(self.make_controle_point(0," "))
+		self.controles.append(self.make_controle_point(0,""))
+
+	def make_controle_point(self,distance,descriptor):
+		controle_point = {"description": descriptor, "distance": distance }
+		return controle_point
 
 	def add_controle_point(self,controle):
 		self.controles.append(controle)
 
-	def update_controle_point(control_num, distance, descriptor):
+	def update_controle_point(self, control_num, distance, descriptor):
 		if control_num <= len(self.controles):
 			controle_point = self.make_controle_point(distance,descriptor)
 			self.controles[control_num-1] = controle_point
