@@ -55,9 +55,9 @@ class AcpBrevet():
 		#when distance 0, this controle is the start line and has a static open and close
 		if(distance == 0):
 			if(chart == CONTROL_MAX):
-				return self.starttime
+				return self.brev_start
 			else:
-				return self.starttime.replace(hour=+1)
+				return self.brev_start.replace(hour=+1)
 
 		#calculation for controle points after start control
 		remaining_dist = distance
