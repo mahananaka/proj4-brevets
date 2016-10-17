@@ -32,7 +32,7 @@ def test_add_control():
 	cp = brevet.make_controle_point(350,"")
 	brevet.add_controle_point(cp)
 
-	assert brevet.get_control_times() == [{'open': <Arrow [2016-11-10T08:00:00+00:00]>, 'distance': 0, 'close': <Arrow [2016-11-10T09:00:00+00:00]>, 'description': ''},
- {'open': <Arrow [2016-11-10T10:56:00+00:00]>, 'distance': 100, 'close': <Arrow [2016-11-10T14:40:00+00:00]>, 'description': 'First Checkpoint'}, 
- {'open': <Arrow [2016-11-10T13:51:00+00:00]>, 'distance': 199, 'close': <Arrow [2016-11-10T21:16:00+00:00]>, 'description': '2nd'}, 
- {'open': <Arrow [2016-11-10T18:34:00+00:00]>, 'distance': 350, 'close': <Arrow [2016-11-11T07:20:00+00:00]>, 'description': ''}]
+	assert brevet.get_control_times() == [{'description':'','distance': 0, "open":arrow.get('2016-11-10T08:00:00+00:00'), "close":arrow.get('2016-11-10T09:00:00+00:00')},
+										  {'description':'','distance': 0, "open":arrow.get('2016-11-10T10:56:00+00:00'), "close":arrow.get('2016-11-10T14:40:00+00:00')},
+										  {'description':'','distance': 0, "open":arrow.get('2016-11-10T13:51:00+00:00'), "close":arrow.get('2016-11-10T21:16:00+00:00')},
+										  {'description':'','distance': 0, "open":arrow.get('2016-11-10T18:34:00+00:00'), "close":arrow.get('2016-11-11T07:20:00+00:00')}]
