@@ -18,4 +18,4 @@ def test_new_brevet():
     brevet = AcpBrevet( 1000, arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm') )
     assert brevet.brev_length == 1000
     assert brevet.brev_start == arrow.get('2016-11-10 08:00', 'YYYY-MM-DD HH:mm')
-    assert brevet.get_control_times() == [{"discription":"","distance":0, "open":brev_starttime, "close":brev_starttime.replace(hour=+1)}]
+    assert brevet.get_control_times() == [{"discription":"","distance":0, "open":brev_start, "close":brev_start.replace(hour=+1)}]
