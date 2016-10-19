@@ -21,7 +21,7 @@ Control location	Min Speed	Max Speed
 1000-1300			13.333		26
 =================================================
 
-Control location has been converted to a range instead.
+Control location has been converted to a span instead.
 Ex: 600-1000 becomes 1000-600=400.
 """
 CONTROL_MAX = [ (200,34), (200,32), (200,30), (400,28), (300,26) ]
@@ -48,10 +48,13 @@ class AcpBrevet():
 
 
 	def update_controle_point(self, control_num, distance, descriptor):
-				#number of control points start at 1, but array begins at 0
+		#number of control points start at 1, but array begins at 0
 		if control_num <= len(self.controles) and control_num > 0:
 			controle_point = self.make_controle_point(distance,descriptor)
 			self.controles[control_num-1] = controle_point
+			return True
+		else:
+			return False
 
 	def get_control_times(self):
 		#update open and close times
