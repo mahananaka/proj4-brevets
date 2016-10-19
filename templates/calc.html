@@ -29,7 +29,7 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-<h1>ACP Brevet Closing times</h1>
+<h1>ACP Brevet</h1>
 
   <!--
   -- If there are any warnings or other messages from a prior
@@ -49,6 +49,19 @@
   {% endif %}
 {% endwith %}
 
+ <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Brevet Distance
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">200</a></li>
+    <li><a href="#">200</a></li>
+    <li><a href="#">300</a></li>
+    <li><a href="#">400</a></li>
+    <li><a href="#">1000</a></li>
+  </ul>
+</div>
+<div><input type="text" class="form-control" name="StartDate" value="YYYY/MM/DD"/></div>
+<div><input type="text" class="form-control" name="StartTime" value="HH:MM"/></div>
 <!-- Design on bootstrap grid -->
 <form role="form">
 <div class="row">
