@@ -170,12 +170,20 @@
   });
 
   $('#startDate').change(function(){
+      console.log("fired date");
+      console.log($('#startDate').val());
        if(dateRegex.test($('#startDate').val())){
         alert("good");
       }
   });
-  
 
+    $('#startTime').change(function(){
+      console.log("fired time")
+      console.log($('#startTime').val());
+       if(dateRegex.test($('#startDate').val())){
+        alert("good");
+      }
+  });
 </script>
 
 </div>
