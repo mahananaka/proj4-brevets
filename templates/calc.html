@@ -60,11 +60,11 @@
 </div>
 <div class="input-group col-sm-3">
   <span class="input-group-addon">Start Date</span>
-  <input type="text" class="form-control" name="StartDate" value="YYYY/MM/DD"/>
+  <input type="text" class="form-control" id="startDate" name="StartDate" value="YYYY/MM/DD"/>
 </div>
 <div class="input-group col-sm-3">
   <span class="input-group-addon">Start Time</span>
-  <input type="text" class="form-control" name="StartTime" value="HH:MM"/>
+  <input type="text" class="form-control" id="startTime" name="StartTime" value="HH:MM"/>
 </div>
 <br>
 <!-- Design on bootstrap grid -->
@@ -134,6 +134,8 @@
 
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 
+  var dateYYYYMMDDRegex = '^(19|20)dd[/](0[1-9]|1[012])[/](0[1-9]|[12]d|3[01])$';
+
   $(document).ready(function(){
    // Do the following when the page is finished loading
 
@@ -165,6 +167,14 @@
   $('a[name="ddmItem"]').click(function(){
       $('#dropMenu').html("Brevet Distance: " + $(this).text() + " <span class='caret' />");
   });
+
+  $('#startDate').change(function(){
+      if(dateYYYYMMDDRegex.test($('#startDate').val()){
+        alert("good")
+      }
+
+  });
+  
 
 </script>
 
