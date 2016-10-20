@@ -169,8 +169,9 @@
   });
 
   $('#startDate').change(function(){
+      alert($('#startDate').val());
       if(dateYYYYMMDDRegex.test($('#startDate').val()){
-        alert("good")
+        alert("good");
       }
 
   });
