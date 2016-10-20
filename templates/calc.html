@@ -101,10 +101,10 @@
     <input type="text" class="form-control" name="location" value="Optional" />
   </div>
   <div class="col-sm-2">
-    <p class="times form-control">(Open)</p>
+    <p class="times">(Open)</p>
   </div>
   <div class="col-sm-2">
-    <p class="times form-control">(Close)</p>
+    <p class="times">(Close)</p>
   </div>
 </div>
 
@@ -170,18 +170,15 @@
   });
 
   $('#startDate').change(function(){
-      console.log("fired date");
-      console.log($('#startDate').val());
        if(dateRegex.test($('#startDate').val())){
         alert("good");
       }
   });
 
     $('#startTime').change(function(){
-      console.log("fired time")
-      console.log($('#startTime').val());
+
        if(dateRegex.test($('#startDate').val())){
-        alert("good");
+        
       }
   });
 </script>
