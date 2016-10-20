@@ -49,12 +49,12 @@
   {% endif %}
 {% endwith %}
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropMenu">Brevet Distance <span class="caret"></span></button>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropMenu">Brevet Distance <span class="caret"/></button>
   <ul class="dropdown-menu">
-    <li name="ddmItem">200</li>
     <li name="ddmItem">200</li>
     <li name="ddmItem">300</li>
     <li name="ddmItem">400</li>
+    <li name="ddmItem">600</li>
     <li name="ddmItem">1000</li>
   </ul>
 </div>
@@ -163,7 +163,7 @@
   });   // end of what we do on document ready
 
   $('li[name="ddmItem"]').click(function(){
-      $('#dropMenu').html($(this).html());
+      $('#dropMenu').html($(this).html() + " <span class='caret' />");
   });
 
 </script>
