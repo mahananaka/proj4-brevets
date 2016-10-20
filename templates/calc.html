@@ -49,21 +49,21 @@
   {% endif %}
 {% endwith %}
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Brevet Distance <span class="caret"></span></button>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropMenu">Brevet Distance <span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li><a href="#">200</a></li>
-    <li><a href="#">200</a></li>
-    <li><a href="#">300</a></li>
-    <li><a href="#">400</a></li>
-    <li><a href="#">1000</a></li>
+    <li name="ddmItem">200</li>
+    <li name="ddmItem">200</li>
+    <li name="ddmItem">300</li>
+    <li name="ddmItem">400</li>
+    <li name="ddmItem">1000</li>
   </ul>
 </div>
-<div class="input-group col-sm-2">
+<div class="input-group col-sm-3">
   <span class="input-group-addon">Start Date</span>
   <input type="text" class="form-control" name="StartDate" value="YYYY/MM/DD"/>
 </div>
-<div class="input-group col-sm-2">
-  <span class="input-group-addon">Start Date</span>
+<div class="input-group col-sm-3">
+  <span class="input-group-addon">Start Time</span>
   <input type="text" class="form-control" name="StartTime" value="HH:MM"/>
 </div>
 <br>
@@ -159,10 +159,12 @@
                      // alert("Got a response: " +  times);
                      target.text(times);
                   }); // End of the call to getJSON
-          });  // End of the function to be called when field changes
-              
+      });  // End of the function to be called when field changes
+  });   // end of what we do on document ready
 
-     });   // end of what we do on document ready
+  $('li[name="ddmItem"]').click(function(){
+      $('#dropMenu').html($(this).html());
+  });
 
 </script>
 
