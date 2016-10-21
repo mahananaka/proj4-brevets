@@ -21,7 +21,7 @@ def test_new_brevet():
 
 def test_brevet_example1():
     """
-    Testing initializing AcpBrevet
+    Running example 1 of ACP rules
     """
     brevet = AcpBrevet( 200, arrow.get('2016-11-10 10:00', 'YYYY-MM-DD HH:mm') )
     
@@ -35,4 +35,5 @@ def test_brevet_example1():
     assert brevet.calc_close(60, brevet.brev_length) == arrow.get('2016-11-10 14:00', 'YYYY-MM-DD HH:mm')
     assert brevet.calc_close(120, brevet.brev_length) == arrow.get('2016-11-10 18:00', 'YYYY-MM-DD HH:mm')
     assert brevet.calc_close(175, brevet.brev_length) == arrow.get('2016-11-10 21:40', 'YYYY-MM-DD HH:mm')
+    print(brevet.calc_close)
     assert brevet.calc_close(200, brevet.brev_length) == arrow.get('2016-11-10 13:30', 'YYYY-MM-DD HH:mm')
