@@ -35,5 +35,4 @@ def test_brevet_example1():
     assert brevet.calc_close(60, brevet.brev_length) == arrow.get('2016-11-10 14:00', 'YYYY-MM-DD HH:mm')
     assert brevet.calc_close(120, brevet.brev_length) == arrow.get('2016-11-10 18:00', 'YYYY-MM-DD HH:mm')
     assert brevet.calc_close(175, brevet.brev_length) == arrow.get('2016-11-10 21:40', 'YYYY-MM-DD HH:mm')
-    print(brevet.calc_close(200,brevet.brev_length))
     assert brevet.calc_close(200, brevet.brev_length) == arrow.get('2016-11-10 23:30', 'YYYY-MM-DD HH:mm')
