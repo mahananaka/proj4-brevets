@@ -47,6 +47,7 @@ class AcpBrevet():
 			return self.brev_start.replace(hours=+1)
 		
 		if(dist > total):
+			return BREVET_END[str(total)]
 			mins = BREVET_END[str(total)]
 		else:
 			#calculation for controle points after start control
