@@ -64,6 +64,9 @@ class AcpBrevet():
 			hrs += int(mins / MINUTES_PER_HOUR)
 			mins = mins % MINUTES_PER_HOUR
 
+		if(dist > total):
+			print(hrs + "-" + mins)
+
 		return self.brev_start.replace(hours=+hrs,minutes=+mins)
 
 	def calc_open(self,dist,total):
