@@ -52,3 +52,15 @@ def test_brevet_example2():
     #closing
     assert brevet.calc_close(550, brevet.brev_length) == arrow.get('2016-11-11 13:40', 'YYYY-MM-DD HH:mm')
     assert brevet.calc_close(600, brevet.brev_length) == arrow.get('2016-11-11 17:00', 'YYYY-MM-DD HH:mm')
+
+def test_brevet_example3():
+    """
+    Running example 3 of ACP rules
+    """
+    brevet = AcpBrevet( 1000, arrow.get('2016-11-10 01:00', 'YYYY-MM-DD HH:mm') )
+    
+    #open
+    assert brevet.calc_open(890, brevet.brev_length) == arrow.get('2016-11-11 06:09', 'YYYY-MM-DD HH:mm')
+
+    #closing
+    assert brevet.calc_close(890, brevet.brev_length) == arrow.get('2016-11-12 18:23', 'YYYY-MM-DD HH:mm')
