@@ -25,7 +25,7 @@ Control location has been converted to a span instead.
 Ex: 600-1000 becomes 1000-600=400.
 """
 CONTROL_MAX = [ (200,34), (200,32), (200,30), (400,28), (300,26) ]
-CONTROL_MIN = [ (200,15), (200,15), (200,15), (400,11.428), (300,13.333) ]
+CONTROL_MIN = [ (600,15), (400,11.428), (300,13.333) ]
 BREVET_END = {"200":810, "300":1200, "400":1620, "600":2400, "1000":4500}
 MINUTES_PER_HOUR = 60
 #13:30 for 200 KM, 20:00 for 300 KM, 27:00 for 400 KM, 40:00 for 600 KM, and 75:00 for 1000 KM
