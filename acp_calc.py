@@ -26,62 +26,88 @@ Ex: 600-1000 becomes 1000-600=400.
 """
 CONTROL_MAX = [ (200,34), (200,32), (200,30), (400,28), (300,26) ]
 CONTROL_MIN = [ (200,15), (200,15), (200,15), (400,11.428), (300,13.333) ]
+BREVET_END = {"200":810, "300":1200, "400":1620, "600":2400, "1000":4500}
 MINUTES_PER_HOUR = 60
+#13:30 for 200 KM, 20:00 for 300 KM, 27:00 for 400 KM, 40:00 for 600 KM, and 75:00 for 1000 KM
 
 class AcpBrevet():
 
-	def __init__(self, length, starttime):
+	def __init__(self, length, start):
 
 		self.brev_length = length
-		self.brev_start = starttime #arrow datetime
+		self.brev_start = start #arrow datetime
 		self.controles = []
 
 		#make the initial controle point
 		self.controles.append(self.make_controle_point(0,""))
 
-	def make_controle_point(self,distance,descriptor):
-		controle_point = {"description": descriptor, "distance": distance }
-		return controle_point
+	def set_brevet_length(length):
+		self.brev_start = length
 
-	def add_controle_point(self,controle):
+	def set_brevet_start(start)
+		self.brev_start = start #arrow datetime
+
+	def add_controle_point(self,dist,descr):
+		controle_point = {"description":descr, "distance":dist }
 		self.controles.append(controle)
 
 
-	def update_controle_point(self, control_num, distance, descriptor):
-		#number of control points start at 1, but array begins at 0
-		if control_num <= len(self.controles) and control_num > 0:
-			controle_point = self.make_controle_point(distance,descriptor)
-			self.controles[control_num-1] = controle_point
+	def update_controle_point(self, index, distance, descriptor):
+		if (control_num < len(self.controles) and control_num >= 0):
+			controle_point = {"description":descr, "distance":dist }
+			self.controles[index] = controle_point
 			return True
 		else:
 			return False
 
-	def get_control_times(self):
-		#update open and close times
-		for cp in self.controles:
-			cp["open"] = self.__calc_control_time(cp["distance"],CONTROL_MAX)
-			cp["close"] = self.__calc_control_time(cp["distance"],CONTROL_MIN)
+	def get_control_open(self, index):
+		return self.calc_open(self.controle[index]["distance"],self.brev_length)
 
-		print(self.controles)
-		return self.controles
+	def get_control_close(self, index):
+		return self.calc_close(self.controle[index]["distance"],self.brev_length)
 
 	"""
 	Private members
 	"""
-	def __calc_control_time(self,distance,chart):
+	def calc_close(self,dist,total):
+		hrs = 0
+		mins = 0		
+
+		#when distance 0, this controle is the start line and has a static open and close
+		if(dist == 0):
+			return self.brev_start.replace(hours=+1)
+		
+		if(dist > total):
+			mins = BREVET_END[str(total)]
+		else:
+			#calculation for controle points after start control
+			remaining_dist = dist
+			for i,(span,speed) in enumerate(CONTROL_MIN):
+				if(remaining_dist>0):
+					dist_seg = min(remaining_dist,span)
+					hrs = int(hrs + dist_seg / speed)
+					mins = mins + int(round((dist_seg%speed/speed)*MINUTES_PER_HOUR))
+					remaining_dist = remaining_dist - span
+				else:
+					break
+
+		if(mins >= MINUTES_PER_HOUR):
+			hrs += int(mins / MINUTES_PER_HOUR)
+			mins = mins % MINUTES_PER_HOUR
+
+		return self.brev_start.replace(hours=+hrs,minutes=+mins)
+
+	def calc_open(self,dist,total):
 		#when distance 0, this controle is the start line and has a static open and close
 		if(distance == 0):
-			if(chart == CONTROL_MAX):
-				return self.brev_start
-			else:
-				return self.brev_start.replace(hours=+1)
+			return self.brev_start
 
 		#calculation for controle points after start control
 		remaining_dist = distance
 		hrs = 0
 		mins = 0
 
-		for i,(span,speed) in enumerate(chart):
+		for i,(span,speed) in enumerate(CONTROL_MAX):
 			if(remaining_dist>0):
 				dist_seg = min(remaining_dist,span)
 				hrs = int(hrs + dist_seg / speed)
