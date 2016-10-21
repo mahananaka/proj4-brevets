@@ -41,34 +41,6 @@ class AcpBrevet():
 		#make the initial controle point
 		self.controles.append(self.make_controle_point(0,""))
 
-	def set_brevet_length(length):
-		self.brev_start = length
-
-	def set_brevet_start(start)
-		self.brev_start = start #arrow datetime
-
-	def add_controle_point(self,dist,descr):
-		controle_point = {"description":descr, "distance":dist }
-		self.controles.append(controle)
-
-
-	def update_controle_point(self, index, distance, descriptor):
-		if (control_num < len(self.controles) and control_num >= 0):
-			controle_point = {"description":descr, "distance":dist }
-			self.controles[index] = controle_point
-			return True
-		else:
-			return False
-
-	def get_control_open(self, index):
-		return self.calc_open(self.controle[index]["distance"],self.brev_length)
-
-	def get_control_close(self, index):
-		return self.calc_close(self.controle[index]["distance"],self.brev_length)
-
-	"""
-	Private members
-	"""
 	def calc_close(self,dist,total):
 		hrs = 0
 		mins = 0		
