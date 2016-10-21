@@ -68,11 +68,11 @@ class AcpBrevet():
 
 	def calc_open(self,dist,total):
 		#when distance 0, this controle is the start line and has a static open and close
-		if(distance == 0):
+		if(dist == 0):
 			return self.brev_start
 
 		#calculation for controle points after start control
-		remaining_dist = distance
+		remaining_dist = dist
 		hrs = 0
 		mins = 0
 
