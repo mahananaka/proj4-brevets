@@ -37,18 +37,18 @@ def test_brevet_example1():
     assert brevet.calc_close(175, brevet.brev_length) == arrow.get('2016-11-10 21:40', 'YYYY-MM-DD HH:mm')
     assert brevet.calc_close(200, brevet.brev_length) == arrow.get('2016-11-10 23:30', 'YYYY-MM-DD HH:mm')
 
-    def test_brevet_example1():
-	    """
-	    Running example 2 of ACP rules
-	    """
-	    brevet = AcpBrevet( 600, arrow.get('2016-11-10 01:00', 'YYYY-MM-DD HH:mm') )
-	    
-	    #open
-	    assert brevet.calc_open(100, brevet.brev_length) == arrow.get('2016-11-10 03:56', 'YYYY-MM-DD HH:mm')
-	    assert brevet.calc_open(200, brevet.brev_length) == arrow.get('2016-11-10 06:53', 'YYYY-MM-DD HH:mm')
-	    assert brevet.calc_open(350, brevet.brev_length) == arrow.get('2016-11-10 11:34', 'YYYY-MM-DD HH:mm')
-	    assert brevet.calc_open(550, brevet.brev_length) == arrow.get('2016-11-10 18:08', 'YYYY-MM-DD HH:mm')
+def test_brevet_example1():
+    """
+    Running example 2 of ACP rules
+    """
+    brevet = AcpBrevet( 600, arrow.get('2016-11-10 01:00', 'YYYY-MM-DD HH:mm') )
+    
+    #open
+    assert brevet.calc_open(100, brevet.brev_length) == arrow.get('2016-11-10 03:56', 'YYYY-MM-DD HH:mm')
+    assert brevet.calc_open(200, brevet.brev_length) == arrow.get('2016-11-10 06:53', 'YYYY-MM-DD HH:mm')
+    assert brevet.calc_open(350, brevet.brev_length) == arrow.get('2016-11-10 11:34', 'YYYY-MM-DD HH:mm')
+    assert brevet.calc_open(550, brevet.brev_length) == arrow.get('2016-11-10 18:08', 'YYYY-MM-DD HH:mm')
 
-	    #closing
-	    assert brevet.calc_close(550, brevet.brev_length) == arrow.get('2016-11-11 13:40', 'YYYY-MM-DD HH:mm')
-	    assert brevet.calc_close(600, brevet.brev_length) == arrow.get('2016-11-11 17:00', 'YYYY-MM-DD HH:mm')
+    #closing
+    assert brevet.calc_close(550, brevet.brev_length) == arrow.get('2016-11-11 13:40', 'YYYY-MM-DD HH:mm')
+    assert brevet.calc_close(600, brevet.brev_length) == arrow.get('2016-11-11 17:00', 'YYYY-MM-DD HH:mm')
