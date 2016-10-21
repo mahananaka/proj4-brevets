@@ -38,9 +38,6 @@ class AcpBrevet():
 		self.brev_start = start #arrow datetime
 		self.controles = []
 
-		#make the initial controle point
-		self.controles.append(self.make_controle_point(0,""))
-
 	def calc_close(self,dist,total):
 		hrs = 0
 		mins = 0		
