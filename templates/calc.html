@@ -181,7 +181,7 @@
 
   $('#startDate').change(function(){
        if(dateRegex.test($('#startDate').val())){
-        displayControls
+        displayControls();
       }
       else
         alert("failed regex");
@@ -189,7 +189,7 @@
 
   $('#startTime').change(function(){
       if(dateRegex.test($('#startDate').val())){
-          displayControls
+          displayControls();
       }
       else
         alert("failed regex");
