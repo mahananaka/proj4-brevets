@@ -183,12 +183,16 @@
        if(dateRegex.test($('#startDate').val())){
         displayControls
       }
+      else
+        alert("failed regex");
   });
 
   $('#startTime').change(function(){
       if(dateRegex.test($('#startDate').val())){
           displayControls
       }
+      else
+        alert("failed regex");
   });
 
   
