@@ -175,6 +175,10 @@
 
   });
 
+  var displayControls = function(){
+    alert("it worked");
+  }
+
   $('#startDate').change(function(){
        if(dateRegex.test($('#startDate').val())){
         displayControls
@@ -187,9 +191,7 @@
       }
   });
 
-  displayControls = function(){
-    alert("it worked");
-  }
+  
 </script>
 
 </div>
