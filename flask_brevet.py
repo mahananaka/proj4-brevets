@@ -107,7 +107,7 @@ def calc_times():
   open_limit = brevet.calc_open(int(request.form["dist"]),flask.session["bLength"])
   close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 
-  reply["message"] = "New controle point added."
+  reply["message"] = "Controle added or updated."
   reply["open"] = open_limit.format("MMM DD, HH:mm")
   reply["close"] = close_limit.format("MMM DD, HH:mm")
 
