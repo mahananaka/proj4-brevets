@@ -48,7 +48,10 @@
     </ul>
   {% endif %}
 {% endwith %}
-<div class="dropdown">
+<br>
+<form role="form">
+<div class="controls-row">
+<div class="dropdown control-group">
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropMenu">Brevet Distance: 200 km <span class="caret"/></button>
   <ul class="dropdown-menu">
     <li><a href='#' name="ddmItem">200 km </a></li>
@@ -58,7 +61,6 @@
     <li><a href='#' name="ddmItem">1000 km </a></li>
   </ul>
 </div>
-<div class="controls-row">
     <div class="control-group col col-sm-3">
         <div class="input-group">
             <span class="input-group-addon">Start Date</span>
@@ -71,16 +73,16 @@
             <input type="text" class="form-control" value="HH:mm">
         </div>
     </div>
-    <div class="control-group col col-sm-3" name="alertContainer">
-      <div class="alert alert-success">
+</div>
+    <div class="col-sm-3 pull-right" name="alertContainer">
+      <div class="alert alert-success text-center">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         This is a test.
       </div>
     </div>
-</div>
-<br><br>
+<br><br><br><br>
 <!-- Design on bootstrap grid -->
-<form role="form">
+
 <div class="row">
   <div class="col-sm-1">
     <p class="text-center">No.</p>
