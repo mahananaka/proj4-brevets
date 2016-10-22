@@ -181,6 +181,7 @@
   }
 
   $('input[name="startdatetime"]').keyup(function(){
+       console.log("firing");
        if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
         displayControls();
       }
