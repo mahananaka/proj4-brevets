@@ -66,15 +66,14 @@ def set_start():
   """
   app.logger.debug("Got a JSON start post");
   
+  flask.session["bStart"] = request.form["bStart"]
+  flask.session["bLength"] = request.form["bLength"]
+
   try:
     start = arrow.get(request.form["bStart"], "YYYY/MM/DD HH:mm")
   except:
     reply["message"] = "Bad date Time."
     return jsonify(result=reply)
-  
-  
-  flask.session["bStart"] = start
-  flask.session["bLength"] = request.form["bLength"]
   
   brevet = AcpBrevet(request.form["bLength"], start)
   open_limit = brevet.calc_open(0,request.form["bLength"])
