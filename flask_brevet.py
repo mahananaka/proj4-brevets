@@ -43,7 +43,7 @@ app.logger.setLevel(logging.DEBUG)
 @app.route("/calc")
 def index():
   app.logger.debug("Main page entry")
-  flask.g.dateOutput = "YYYY MMM DD HH:mm"
+  flask.g.dateOutput = "YYYY MMM DD HH:mm";
   return flask.render_template('calc.html')
 
 
