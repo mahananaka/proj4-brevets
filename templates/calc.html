@@ -179,13 +179,13 @@
     alert("it worked");
   }
 
-  $('#startDate').change(function(){
+  $('#startDate').keyup(function(){
        if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
         displayControls();
       }
   });
 
-  $('#startTime').change(function(){
+  $('#startTime').keyup(function(){
       if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
         displayControls();
       }
