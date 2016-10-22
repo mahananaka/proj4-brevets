@@ -220,7 +220,7 @@
       var htmlcode = "<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
       htmlcode = htmlcode + message;
 
-      console.log($('div[name="alertContainer"]').className);
+      console.log($('div[name="alertContainer"]').attr("class"));
       $('div[name="alertContainer"]').html(htmlcode);
   }
   
