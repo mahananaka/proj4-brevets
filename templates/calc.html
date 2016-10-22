@@ -211,10 +211,12 @@
 
   var displayNextControl = function(){
       $('div[name="controles"]').removeClass("hidden");
-      console.log($('div[name="controles"]').children().eq(cControleCount));
-      nextChild = $('div[name="controles"]').children().eq(cControleCount);
-      nextChild.removeClass("hidden");
 
+      if(cControleCount<=21){ //because this is the max amount we have available
+          nextChild = $('div[name="controles"]').children().eq(cControleCount);
+          nextChild.removeClass("hidden");
+          cControleCount++;
+      }
   }
 
   var createEvent = function(){
