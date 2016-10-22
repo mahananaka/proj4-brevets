@@ -179,7 +179,7 @@
               var closeObj = $(this).parents(".row").find("p[name='close']");
               miInput.val(kilometers/KM_PER_MILE);
 
-              getControleTimes(miInput.val(),brevetLength,openObj,closeObj);
+              getControleTimes(kilometers,brevetLength,openObj,closeObj);
           });  // End of the change function
 
   });   // end of what we do on document ready
