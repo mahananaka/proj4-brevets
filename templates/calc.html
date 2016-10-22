@@ -180,13 +180,13 @@
   }
 
   $('#startDate').change(function(){
-       if(dateRegex.test($('#startDate').val()) && dateRegex.test($('#startDate').val())){
+       if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
         displayControls();
       }
   });
 
   $('#startTime').change(function(){
-      if(dateRegex.test($('#startDate').val()) && dateRegex.test($('#startDate').val())){
+      if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
         displayControls();
       }
   });
