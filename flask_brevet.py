@@ -64,26 +64,28 @@ def set_start():
   """
   Creates and AcpBrevet object with from total length and start time.
   """
-  app.logger.debug("Got a JSON start post");
+  app.logger.debug("Got a JSON set_start post");
   
   flask.session["bStart"] = request.form["bStart"]
   flask.session["bLength"] = request.form["bLength"]
   reply = {}
 
   try:
-    start = arrow.get(request.form["bStart"], "YYYY/MM/DD HH:mm")
+    start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
   except:
     reply["message"] = "Bad date Time."
     return jsonify(result=reply)
   
   brevet = AcpBrevet(request.form["bLength"], start)
-  open_limit = brevet.calc_open(0,request.form["bLength"])
-  close_limit = brevet.calc_close(0,request.form["bLength"])
+  open_limit = brevet.calc_open(0,flask.session["bLength"])
+  close_limit = brevet.calc_close(0,flask.session["bLength"])
 
   reply["message"] = "Start of event and length set."
   reply["open"] = open_limit.format("MMM DD, HH:mm")
   reply["close"] = close_limit.format("MMM DD, HH:mm")
   return jsonify(result=reply)
+
+#----------------------
 
 @app.route("/_calc_times", methods = ["POST"])
 def calc_times():
@@ -92,13 +94,24 @@ def calc_times():
   described at http://www.rusa.org/octime_alg.html.
   Expects one URL-encoded argument, the number of miles. 
   """
-  app.logger.debug("Got a JSON post");
-  brevet_length = request.form["brevet_length"]
-  dist = request.form["dist"]
+  app.logger.debug("Got a JSON calc_time post");
+  reply = {}
 
-  acp_limits = {}
-  #acp_limits["open"] = 
-  return jsonify(result=miles * 2)
+  try:
+    start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
+  except:
+    reply["message"] = "Bad date Time."
+    return jsonify(result=reply)
+
+  brevet = AcpBrevet(flask.session["bLength"], start)
+  open_limit = brevet.calc_open(request.form["dist"],flask.session["bLength"])
+  close_limit = brevet.calc_close(request.form["dist"],flask.session["bLength"])
+
+  reply["message"] = "New controle point added."
+  reply["open"] = open_limit.format("MMM DD, HH:mm")
+  reply["close"] = close_limit.format("MMM DD, HH:mm")
+
+  return jsonify(result=reply)
  
 #################
 #

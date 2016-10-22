@@ -29,9 +29,10 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
+
 <h1>ACP Brevet</h1>
 <form role="form">
-<div class="container" name="alertContainer">
+<div class="container" name="alertContainer" style="float:">
 </div>
   <!--
   -- If there are any warnings or other messages from a prior
@@ -152,7 +153,8 @@
   var brevetDistance = /\b\d{3,4}\b/;
   var distRegex = /^\d{2,4}$/;
 
-  var brevetLength = 0; //start this at 200
+  var brevetLength = 0;
+  var cControleCount = 2;
 
   $(document).ready(function(){
    // Do the following when the page is finished loading
@@ -167,7 +169,19 @@
 
 
               getControleTimes(kmInput.val(),brevetLength,openObj,closeObj);
-          });  // End of the function to be called when field changes
+          });  // End of the change function
+
+      $('input[name="kilometers"]').change(
+          function(){
+              var kilometers = $(this).val();
+              var miInput = $(this).parents(".row").find("input[name='miles']");
+              var openObj = $(this).parents(".row").find("p[name='open']");
+              var closeObj = $(this).parents(".row").find("p[name='close']");
+              miInput.val(kilometers/KM_PER_MILE);
+
+              getControleTimes(miInput.val(),brevetLength,openObj,closeObj);
+          });  // End of the change function
+
   });   // end of what we do on document ready
 
   $('a[name="ddmItem"]').click(function(){
@@ -178,11 +192,19 @@
 
   var getControleTimes = function(dist, tDist, openElem, closeElem) {
     
-    $.post( "/_calc_times", {"brevet_length": tDist, "dist": dist},
+    $.post( "/_calc_times", {"dist": dist},
         function(data) { //this function handles the response.
-            //data.result.flash
-            //data.result.matches
-            
+            //data.result.message
+            //data.result.open
+            //data.result.close
+            if(data.result.message.includes("added")){
+                openElem.html(data.result.open);
+                closeElem.html(data.result.close);
+
+                sendAlert(data.result.message,"success");
+            }
+            else
+              sendAlert(data.result.message,"danger");
         }
     );
   }
