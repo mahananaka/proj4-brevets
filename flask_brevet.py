@@ -60,7 +60,7 @@ def page_not_found(error):
 #
 ###############
 @app.route("/_set_start", methods = ["POST"])
-def calc_times():
+def set_start():
   """
   Creates and AcpBrevet object with from total length and start time.
   """
