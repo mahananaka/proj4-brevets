@@ -31,7 +31,7 @@
 
 <h1>ACP Brevet</h1>
 <form role="form">
-<div class="alert alert-success text-center">
+<div class="alert alert-success text-center" id="alertContainer">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   Event created for that time.
 </div>
@@ -217,9 +217,10 @@
   });
 
   var sendAlert = function(message, type){
-      var htmlcode = "<div class='alert alert-" + type + "'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-      htmlcode = htmlcode + message + "</div>";
+      var htmlcode = "<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+      htmlcode = htmlcode + message;
 
+      console.log($('div[name="alertContainer"]').className);
       $('div[name="alertContainer"]').html(htmlcode);
   }
   
