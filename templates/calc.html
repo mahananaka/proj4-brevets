@@ -134,8 +134,10 @@
 
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 
+  var KM_PER_MILE = 1.60934;
   var dateRegex = /^\d{4}\/([0][1-9]|[1][012])\/([0][1-9]|[12][\d]|[3][01])$/;
   var timeRegex = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;
+  var brevetDistance = /\b\d{3,4}\b/;
 
   $(document).ready(function(){
    // Do the following when the page is finished loading
@@ -144,9 +146,13 @@
       $('input[name="miles"]').change(
           // ... execute this function
           function(){
-              var e_miles = $(this).val();
-
+              var miles = $(this).val();
               var target = $(this).parents(".row").find(".times");
+              var kmInput = $(this).parents(".row").children("kilometers");
+
+              kmInput.val(miles*KM_PER_MILE);
+
+              return true;
 
               // DEBUG: How do I replace the 'times' field?
               // alert("Content of the field I want to change: " +
@@ -167,6 +173,7 @@
 
   $('a[name="ddmItem"]').click(function(){
       $('#dropMenu').html("Brevet Distance: " + $(this).text() + " <span class='caret' />");
+
   });
 
   $('#startDate').change(function(){
