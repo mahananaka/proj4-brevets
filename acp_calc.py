@@ -71,6 +71,9 @@ class AcpBrevet():
 		if(dist == 0):
 			return self.brev_start
 
+		if(dist >= total):
+			dist = total
+
 		#calculation for controle points after start control
 		remaining_dist = dist
 		hrs = 0

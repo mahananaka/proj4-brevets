@@ -167,7 +167,7 @@
               var kmInput = $(this).parents(".row").find("input[name='kilometers']");
               var openObj = $(this).parents(".row").find("p[name='open']");
               var closeObj = $(this).parents(".row").find("p[name='close']");
-              kmInput.val(miles*KM_PER_MILE);
+              kmInput.val(Math.round(miles*KM_PER_MILE));
 
 
               getControleTimes(kmInput.val(),brevetLength,openObj,closeObj);
@@ -179,7 +179,7 @@
               var miInput = $(this).parents(".row").find("input[name='miles']");
               var openObj = $(this).parents(".row").find("p[name='open']");
               var closeObj = $(this).parents(".row").find("p[name='close']");
-              miInput.val(kilometers/KM_PER_MILE);
+              miInput.val(Math.round(kilometers/KM_PER_MILE);
 
               getControleTimes(kilometers,brevetLength,openObj,closeObj);
           });  // End of the change function
