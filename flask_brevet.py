@@ -68,6 +68,7 @@ def set_start():
   
   flask.session["bStart"] = request.form["bStart"]
   flask.session["bLength"] = request.form["bLength"]
+  reply = {}
 
   try:
     start = arrow.get(request.form["bStart"], "YYYY/MM/DD HH:mm")
@@ -79,7 +80,6 @@ def set_start():
   open_limit = brevet.calc_open(0,request.form["bLength"])
   close_limit = brevet.calc_close(0,request.form["bLength"])
 
-  reply = {}
   reply["message"] = "Start of event and length set."
   reply["open"] = open_limit.format("MMM DD, HH:mm")
   reply["close"] = close_limit.format("MMM DD, HH:mm")
