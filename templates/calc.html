@@ -32,10 +32,6 @@
 <h1>ACP Brevet</h1>
 <form role="form">
 <div class="container" name="alertContainer">
-  <div class="alert alert-success text-center">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    Event created for that time.
-  </div>
 </div>
   <!--
   -- If there are any warnings or other messages from a prior
@@ -222,7 +218,12 @@
       var htmlcode = "<div class='alert alert-success text-center'><a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
       htmlcode = htmlcode + message + "</div>";
 
-      $('div[name="alertContainer"]').html(htmlcode);
+      msgContainer = $('div[name="alertContainer"]')
+
+      msgContainer.html(htmlcode);
+      msgContainer.fadeTo(2000, 500).slideUp(500, function(){
+          msgContainer.slideUp(500);
+      });
   }
   
 </script>
