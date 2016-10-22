@@ -121,7 +121,7 @@
   </div>
 
   {% for n in range(19) %}
-  <div class="row">
+  <div class="row hidden">
     <div class="col-sm-1">
       <div class="text-center h5">{{ (loop.index+1) }}</div>
     </div>
@@ -156,7 +156,7 @@
   var distRegex = /^\d{2,4}$/;
 
   var brevetLength = 200; //initial value
-  var cControleCount = 2;
+  var cControleCount = 1;
 
   $(document).ready(function(){
    // Do the following when the page is finished loading
@@ -196,16 +196,12 @@
     
     $.post( "/_calc_times", {"dist": dist},
         function(data) { //this function handles the response.
-            //data.result.message
-            //data.result.open
-            //data.result.close
             if(data.result.message.includes("added")){
                 openElem.html(data.result.open);
                 closeElem.html(data.result.close);
-
-                console.log(openElem.html());
-
                 sendAlert(data.result.message,"success");
+
+                displayNextControl();
             }
             else
               sendAlert(data.result.message,"danger");
@@ -213,8 +209,8 @@
     );
   }
 
-  var displayControls = function(){
-    
+  var displayNextControl = function(){
+      console.log($('div[name"controles"]').children()[cControleCount].html());
   }
 
   var createEvent = function(){
@@ -230,14 +226,12 @@
                       sendAlert(msg,"success");
                       $('#firstOpen').html(data.result.open);
                       $('#firstClose').html(data.result.close);
-                      $('div[name="controles"]').toggleClass("hidden");
+                      $('div[name="controles"]').removeClass("hidden");
                   }
                   else
                     sendAlert(msg, "danger");
               }
           );
-
-          displayControls();
       }
   }
 
