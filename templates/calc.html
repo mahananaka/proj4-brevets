@@ -195,7 +195,7 @@
               function(data) { //this function handles the response.
                   var msg = data.result.message;
                   console.log(msg);
-                  if(msg.contains("set")){
+                  if(msg.includes("set")){
                       sendAlert(msg,"success");
                   }
               }
