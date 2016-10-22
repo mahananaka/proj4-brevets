@@ -43,6 +43,7 @@ app.logger.setLevel(logging.DEBUG)
 @app.route("/calc")
 def index():
   app.logger.debug("Main page entry")
+  flask.g.dateOutput = "YYYY MMM DD HH:mm"
   return flask.render_template('calc.html')
 
 
@@ -81,8 +82,8 @@ def set_start():
   close_limit = brevet.calc_close(0,flask.session["bLength"])
 
   reply["message"] = "Start of event and length set."
-  reply["open"] = open_limit.format("DD MMM 'YY   HH:mm")
-  reply["close"] = close_limit.format("DD MMM 'YY   HH:mm")
+  reply["open"] = open_limit.format(flask.g.dateOutput)
+  reply["close"] = close_limit.format(flask.g.dateOutput)
   return jsonify(result=reply)
 
 #----------------------
@@ -108,8 +109,8 @@ def calc_times():
   close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 
   reply["message"] = "Controle added or updated."
-  reply["open"] = open_limit.format("DD MMM 'YY   HH:mm")
-  reply["close"] = close_limit.format("DD MMM 'YY   HH:mm")
+  reply["open"] = open_limit.format(flask.g.dateOutput)
+  reply["close"] = close_limit.format(flask.g.dateOutput)
 
   return jsonify(result=reply)
  
