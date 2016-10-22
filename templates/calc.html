@@ -156,7 +156,7 @@
   var distRegex = /^\d{2,4}$/;
 
   var brevetLength = 200; //initial value
-  var cControleCount = 1;
+  var cControleCount = 2;
 
   $(document).ready(function(){
    // Do the following when the page is finished loading
@@ -211,7 +211,10 @@
 
   var displayNextControl = function(){
       $('div[name="controles"]').removeClass("hidden");
-      console.log($('div[name="controles"]').children());
+      console.log($('div[name="controles"]').children().eq(cControleCount));
+      nextChild = $('div[name="controles"]').children().eq(cControleCount);
+      nextChild.removeClass("hidden");
+
   }
 
   var createEvent = function(){
