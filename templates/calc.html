@@ -120,9 +120,10 @@
     </div>
   </div>
 
+  {% for n in range(19) %}
   <div class="row">
     <div class="col-sm-1">
-      <div class="text-center h5">2</div>
+      <div class="text-center h5">{{ loop.index }}</div>
     </div>
     <div class="col-sm-2">
       <input type="text" class="form-control text-center" name="miles" value="Miles"/>
@@ -140,6 +141,7 @@
       <p class="times text-center" name="close">(Close)</p>
     </div>
   </div>
+  {% endfor %}
 </div>
 </form>
 
