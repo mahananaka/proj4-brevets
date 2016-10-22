@@ -204,6 +204,7 @@
                       sendAlert(msg,"success");
                       $('#firstOpen').html(data.result.open);
                       $('#firstClose').html(data.result.close);
+                      console.log($('div[names="controles"]').html());
                       $('div[names="controles"]').toggleClass("hidden");
                   }
                   else
