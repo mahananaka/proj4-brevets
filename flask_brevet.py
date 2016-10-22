@@ -68,6 +68,7 @@ def set_start():
   
   flask.session["bStart"] = request.form["bStart"]
   flask.session["bLength"] = int(request.form["bLength"])
+  assert flask.session["bLength"] == 200
   reply = {}
 
   try:
