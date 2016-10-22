@@ -68,7 +68,6 @@ def set_start():
   
   flask.session["bStart"] = request.form["bStart"]
   flask.session["bLength"] = int(request.form["bLength"])
-  app.logger.debug(request.form["bLength"]);
 
   try:
     start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
@@ -105,7 +104,6 @@ def calc_times():
 
   brevet = AcpBrevet(flask.session["bLength"], start)
   open_limit = brevet.calc_open(int(request.form["dist"]),flask.session["bLength"])
-  app.logger.debug("bLength is ".format(flask.session["bLength"]));
   close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 
   reply["message"] = "New controle point added."

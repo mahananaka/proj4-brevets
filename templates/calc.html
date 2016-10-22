@@ -153,7 +153,7 @@
   var brevetDistance = /\b\d{3,4}\b/;
   var distRegex = /^\d{2,4}$/;
 
-  var brevetLength = 0;
+  var brevetLength = 200; //initial value
   var cControleCount = 2;
 
   $(document).ready(function(){
@@ -200,6 +200,8 @@
             if(data.result.message.includes("added")){
                 openElem.html(data.result.open);
                 closeElem.html(data.result.close);
+
+                console.log(openElem.html());
 
                 sendAlert(data.result.message,"success");
             }
