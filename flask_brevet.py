@@ -90,7 +90,7 @@ def calc_times():
   dist = request.form["dist"]
 
   acp_limits = {}
-  acp_limits["open"] = 
+  #acp_limits["open"] = 
   return jsonify(result=miles * 2)
  
 #################
