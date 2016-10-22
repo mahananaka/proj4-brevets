@@ -103,19 +103,19 @@
     <div class="text-center h5">1</div>
   </div>
   <div class="col-sm-2">
-    <p class="form-control text-center" name="miles">0</p>
+    <p class="text-center" name="miles">0</p>
   </div>
   <div class="col-sm-2">
-    <p class="form-control text-center" name="kilometers">0</p>
+    <p class="text-center" name="kilometers">0</p>
   </div>
   <div class="col-sm-3">
     <input type="text" class="form-control text-center" name="location" value="Optional" />
   </div>
   <div class="col-sm-2">
-    <p class="times text-center" name="open">(Open)</p>
+    <p class="times text-center" name="open" id="firstOpen">(Open)</p>
   </div>
   <div class="col-sm-2">
-    <p class="times text-center" name="close">(Close)</p>
+    <p class="times text-center" name="close" id="firstClose">(Close)</p>
   </div>
 </div>
 
@@ -199,10 +199,13 @@
           $.post( "/_set_start", {"bStart": date + " " + time, "bLength": brevetLength},
               function(data) { //this function handles the response.
                   var msg = data.result.message;
-                  console.log(msg);
                   if(msg.includes("set")){
                       sendAlert(msg,"success");
+                      $('#firstOpen').html(data.result.open);
+                      $('#firstClose').html(data.result.open);
                   }
+                  else
+                    sendAlter(msg, "warning");
               }
           );
 
@@ -215,8 +218,7 @@
   });
 
   var sendAlert = function(message, type){
-      var htmlcode = "<div class='alert alert-success text-center'>";
-      htmlcode = htmlcode + message + "</div>";
+      var htmlcode = "<div class='alert alert-" + type + "text-center'>" + message + "</div>";
 
       msgContainer = $('div[name="alertContainer"]')
 
