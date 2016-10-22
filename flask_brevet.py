@@ -20,7 +20,7 @@ from dateutil import tz  # For interpreting local times
 
 # Our own module
 # import acp_limits
-
+from acp_calc import AcpBrevet
 
 ###
 # Globals
@@ -59,15 +59,38 @@ def page_not_found(error):
 #   These return JSON, rather than rendering pages. 
 #
 ###############
-@app.route("/_calc_times")
+@app.route("/_set_start", methods = ["POST"])
 def calc_times():
   """
-  Calculates open/close times from miles, using rules 
+  Creates and AcpBrevet object with from total length and start time.
+  """
+  app.logger.debug("Got a JSON start post");
+  
+  try:
+    start = arrow.get(request.form["bStart"], "YYYY/MM/DD HH:mm")
+  except:
+    replay = "Bad date Time."
+    return jsonify(result=reply)
+  
+  brevet = AcpBrevet(request.form["bLength"], start)
+  flask.session["brevet"] = brevet
+
+  reply = "Start of event and length set."
+  return jsonify(result=reply)
+
+@app.route("/_calc_times", methods = ["POST"])
+def calc_times():
+  """
+  Calculates open/close times from kilometers, using rules 
   described at http://www.rusa.org/octime_alg.html.
   Expects one URL-encoded argument, the number of miles. 
   """
-  app.logger.debug("Got a JSON request");
-  miles = request.args.get('miles', 0, type=int)
+  app.logger.debug("Got a JSON post");
+  brevet_length = request.form["brevet_length"]
+  dist = request.form["dist"]
+
+  acp_limits = {}
+  acp_limits["open"] = 
   return jsonify(result=miles * 2)
  
 #################

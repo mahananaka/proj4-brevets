@@ -64,7 +64,7 @@
 </div>
 <div class="input-group col-sm-3">
   <span class="input-group-addon">Start Time</span>
-  <input type="text" class="form-control" id="startTime" name="startdatetime" value="HH:MM"/>
+  <input type="text" class="form-control" id="startTime" name="startdatetime" value="HH:mm"/>
 </div>
 <br>
 <!-- Design on bootstrap grid -->
@@ -92,10 +92,10 @@
     <div class="text-center h5">1</div>
   </div>
   <div class="col-sm-2">
-    <input type="text" class="form-control text-center" name="miles" value="Miles"/>
+    <p class="form-control text-center" name="miles">0</p>
   </div>
   <div class="col-sm-2">
-    <input type="text" class="form-control text-center" name="kilometers" value="Kilometers"/>
+    <p class="form-control text-center" name="kilometers">0</p>
   </div>
   <div class="col-sm-3">
     <input type="text" class="form-control text-center" name="location" value="Optional" />
@@ -138,53 +138,65 @@
   var dateRegex = /^\d{4}\/([0][1-9]|[1][012])\/([0][1-9]|[12][\d]|[3][01])$/;
   var timeRegex = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;
   var brevetDistance = /\b\d{3,4}\b/;
+  var distRegex = /^\d{2,4}$/;
+
+  var brevetLength = 0; //start this at 200
 
   $(document).ready(function(){
    // Do the following when the page is finished loading
-
       // When a field named 'miles' is changed ...
       $('input[name="miles"]').change(
-          // ... execute this function
           function(){
               var miles = $(this).val();
               var kmInput = $(this).parents(".row").find("input[name='kilometers']");
+              var openObj = $(this).parents(".row").find("p[name='open']");
+              var closeObj = $(this).parents(".row").find("p[name='close']");
               kmInput.val(miles*KM_PER_MILE);
 
-              // DEBUG: How do I replace the 'times' field?
-              // alert("Content of the field I want to change: " +
-              //   target.html());
 
-              
-      });  // End of the function to be called when field changes
+              getControleTimes(kmInput.val(),brevetLength,openObj,closeObj);
+          });  // End of the function to be called when field changes
   });   // end of what we do on document ready
 
   $('a[name="ddmItem"]').click(function(){
-      $('#dropMenu').html("Brevet Distance: " + $(this).text() + " <span class='caret' />");
-
+      $('#dropMenu').html("Brevet Length: " + $(this).text() + " <span class='caret' />");
+      brevetLength = parseInt($(this).text());
   });
 
-  var getStartStopTimes = function(dist, tDist, openElem, closeElem) {
-
-    $.getJSON($SCRIPT_ROOT + '/_calc_times',
-        // The object to pass to the server
-        { miles: e_miles },
-        // The function to call with the response
-        function(data) {
-            var times = data.result;
-            // alert("Got a response: " +  times);
-            target.text(times);
-        }); // End of the call to getJSON
+  var getControleTimes = function(dist, tDist, openElem, closeElem) {
+    
+    $.post( "/_calc_times", {"brevet_length": tDist, "dist": dist},
+        function(data) { //this function handles the response.
+            //data.result.flash
+            //data.result.matches
+            
+        }
+    );
   }
 
   var displayControls = function(){
     console.log("displaying")
   }
 
-  $('input[name="startdatetime"]').keyup(function(){
-       console.log("firing");
-       if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
-        displayControls();
+  var createEvent = function(){
+      var date = $('#startDate').val();
+      var time = $('#startTime').val()
+      
+      if(dateRegex.test(date) && timeRegex.test(time)){
+
+          $.post( "/_set_start", {"bStart": date + " " + time, "bLength": brevetLength},
+              function(data) { //this function handles the response.
+                  console.log(data.result.reply);
+                  //data.result.matches                  
+              }
+          );
+
+          displayControls();
       }
+  }
+
+  $('input[name="startdatetime"]').keyup(function(){
+      createEvent();
   });
   
 </script>
