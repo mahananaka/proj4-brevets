@@ -210,6 +210,7 @@
   }
 
   var displayNextControl = function(){
+      $('div[name="controles"]').removeClass("hidden");
       console.log($('div[name"controles"]').children()[cControleCount].html());
   }
 
@@ -226,7 +227,7 @@
                       sendAlert(msg,"success");
                       $('#firstOpen').html(data.result.open);
                       $('#firstClose').html(data.result.close);
-                      $('div[name="controles"]').removeClass("hidden");
+                      displayNextControl();
                   }
                   else
                     sendAlert(msg, "danger");
