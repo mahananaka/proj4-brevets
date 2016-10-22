@@ -60,11 +60,11 @@
 </div>
 <div class="input-group col-sm-3">
   <span class="input-group-addon">Start Date</span>
-  <input type="text" class="form-control" id="startDate" name="StartDate" value="YYYY/MM/DD"/>
+  <input type="text" class="form-control" id="startDate" name="startdatetime" value="YYYY/MM/DD"/>
 </div>
 <div class="input-group col-sm-3">
   <span class="input-group-addon">Start Time</span>
-  <input type="text" class="form-control" id="startTime" name="StartTime" value="HH:MM"/>
+  <input type="text" class="form-control" id="startTime" name="startdatetime" value="HH:MM"/>
 </div>
 <br>
 <!-- Design on bootstrap grid -->
@@ -146,27 +146,15 @@
       $('input[name="miles"]').change(
           // ... execute this function
           function(){
-              console.log($(this).val());
               var miles = $(this).val();
               var kmInput = $(this).parents(".row").find("input[name='kilometers']");
               kmInput.val(miles*KM_PER_MILE);
-
-              return true;
 
               // DEBUG: How do I replace the 'times' field?
               // alert("Content of the field I want to change: " +
               //   target.html());
 
-              // AJAX request
-              $.getJSON($SCRIPT_ROOT + '/_calc_times',
-                  // The object to pass to the server
-                  { miles: e_miles },
-                  // The function to call with the response
-                  function(data) {
-                     var times = data.result;
-                     // alert("Got a response: " +  times);
-                     target.text(times);
-                  }); // End of the call to getJSON
+              
       });  // End of the function to be called when field changes
   });   // end of what we do on document ready
 
@@ -175,22 +163,28 @@
 
   });
 
-  var displayControls = function(){
-    alert("it worked");
+  var getStartStopTimes = function(dist, tDist, openElem, closeElem) {
+
+    $.getJSON($SCRIPT_ROOT + '/_calc_times',
+        // The object to pass to the server
+        { miles: e_miles },
+        // The function to call with the response
+        function(data) {
+            var times = data.result;
+            // alert("Got a response: " +  times);
+            target.text(times);
+        }); // End of the call to getJSON
   }
 
-  $('#startDate').keyup(function(){
+  var displayControls = function(){
+    
+  }
+
+  $('input[name="startdatetime"]').keyup(function(){
        if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
         displayControls();
       }
   });
-
-  $('#startTime').keyup(function(){
-      if(dateRegex.test($('#startDate').val()) && timeRegex.test($('#startTime').val())){
-        displayControls();
-      }
-  });
-
   
 </script>
 
