@@ -121,10 +121,10 @@
   <div class="col-sm-3">
     <input type="text" class="form-control text-center" name="location" value="Optional" />
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-2" name="open">
     <p class="times text-center">(Open)</p>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-2" name="close">
     <p class="times text-center">(Close)</p>
   </div>
 </div>
@@ -150,7 +150,7 @@
               var miles = $(this).val();
               var target = $(this).parents(".row").find(".times");
               var kmInput = $(this).parents(".row").children("input[name|='kilometers']");
-
+              console.log($(this).parents(".row").children());
               kmInput.val(miles*KM_PER_MILE);
 
               return true;
