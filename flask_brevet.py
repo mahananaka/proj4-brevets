@@ -32,6 +32,7 @@ import uuid
 app.secret_key = str(uuid.uuid4())
 app.debug=CONFIG.DEBUG
 app.logger.setLevel(logging.DEBUG)
+dateFormat = "YYYY MMM DD HH:mm";
 
 
 ###
@@ -43,7 +44,6 @@ app.logger.setLevel(logging.DEBUG)
 @app.route("/calc")
 def index():
   app.logger.debug("Main page entry")
-  flask.g.dateOutput = "YYYY MMM DD HH:mm";
   return flask.render_template('calc.html')
 
 
@@ -66,6 +66,7 @@ def set_start():
   Creates and AcpBrevet object with from total length and start time.
   """
   app.logger.debug("Got a JSON set_start post");
+  global dateFormat
   reply = {}
 
   flask.session["bStart"] = request.form["bStart"]
@@ -82,8 +83,8 @@ def set_start():
   close_limit = brevet.calc_close(0,flask.session["bLength"])
 
   reply["message"] = "Start of event and length set."
-  reply["open"] = open_limit.format(flask.g.dateOutput)
-  reply["close"] = close_limit.format(flask.g.dateOutput)
+  reply["open"] = open_limit.format(dateFormat)
+  reply["close"] = close_limit.format(dateFormat)
   return jsonify(result=reply)
 
 #----------------------
@@ -96,6 +97,7 @@ def calc_times():
   Expects one URL-encoded argument, the number of miles. 
   """
   app.logger.debug("Got a JSON calc_time post");
+  global dateFormat
   reply = {}
 
   try:
@@ -109,8 +111,8 @@ def calc_times():
   close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 
   reply["message"] = "Controle added or updated."
-  reply["open"] = open_limit.format(flask.g.dateOutput)
-  reply["close"] = close_limit.format(flask.g.dateOutput)
+  reply["open"] = open_limit.format(dateFormat)
+  reply["close"] = close_limit.format(dateFormat)
 
   return jsonify(result=reply)
  
