@@ -81,8 +81,8 @@ def set_start():
   close_limit = brevet.calc_close(0,flask.session["bLength"])
 
   reply["message"] = "Start of event and length set."
-  reply["open"] = open_limit.format("MMM DD, HH:mm")
-  reply["close"] = close_limit.format("MMM DD, HH:mm")
+  reply["open"] = open_limit.format("DD MMM 'YY   HH:mm")
+  reply["close"] = close_limit.format("DD MMM 'YY   HH:mm")
   return jsonify(result=reply)
 
 #----------------------
@@ -108,8 +108,8 @@ def calc_times():
   close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 
   reply["message"] = "Controle added or updated."
-  reply["open"] = open_limit.format("MMM DD, YYYY HH:mm")
-  reply["close"] = close_limit.format("MMM DD, YYYY HH:mm")
+  reply["open"] = open_limit.format("DD MMM 'YY   HH:mm")
+  reply["close"] = close_limit.format("DD MMM 'YY   HH:mm")
 
   return jsonify(result=reply)
  
