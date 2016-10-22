@@ -68,8 +68,7 @@ def set_start():
   
   flask.session["bStart"] = request.form["bStart"]
   flask.session["bLength"] = int(request.form["bLength"])
-  assert flask.session["bLength"] == 200
-  reply = {}
+  app.logger.debug(request.form["bLength"]);
 
   try:
     start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
