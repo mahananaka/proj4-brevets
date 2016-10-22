@@ -104,8 +104,8 @@ def calc_times():
     return jsonify(result=reply)
 
   brevet = AcpBrevet(flask.session["bLength"], start)
-  open_limit = brevet.calc_open(request.form["dist"],flask.session["bLength"])
-  close_limit = brevet.calc_close(request.form["dist"],flask.session["bLength"])
+  open_limit = brevet.calc_open(int(request.form["dist"]),flask.session["bLength"])
+  close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 
   reply["message"] = "New controle point added."
   reply["open"] = open_limit.format("MMM DD, HH:mm")
