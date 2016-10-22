@@ -218,7 +218,8 @@
   });
 
   var sendAlert = function(message, type){
-      var htmlcode = "<div class='alert alert-" + type + "text-center'>" + message + "</div>";
+      var htmlcode = "<div class='alert alert-" + type + "text-center'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+      htmlcode = htmlcode + message + "</div>";
 
       msgContainer = $('div[name="alertContainer"]')
 

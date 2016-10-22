@@ -82,7 +82,7 @@ def set_start():
   reply = {}
   reply["message"] = "Start of event and length set."
   reply["open"] = open_limit.format("MMM DD, HH:mm")
-  reply["close"] = open_limit.format("MMM DD, HH:mm")
+  reply["close"] = close_limit.format("MMM DD, HH:mm")
   return jsonify(result=reply)
 
 @app.route("/_calc_times", methods = ["POST"])
