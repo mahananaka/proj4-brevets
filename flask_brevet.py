@@ -65,8 +65,8 @@ def set_start():
   Creates and AcpBrevet object with from total length and start time.
   """
   app.logger.debug("Got a JSON set_start post");
-  replay = {}
-  
+  reply = {}
+
   flask.session["bStart"] = request.form["bStart"]
   flask.session["bLength"] = int(request.form["bLength"])
 
