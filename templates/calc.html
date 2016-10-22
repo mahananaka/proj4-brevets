@@ -66,6 +66,12 @@
   <span class="input-group-addon">Start Time</span>
   <input type="text" class="form-control" id="startTime" name="startdatetime" value="HH:mm"/>
 </div>
+<div class="container" name="alertContainer">
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    This is a test.
+  </div>
+</div>
 <br>
 <!-- Design on bootstrap grid -->
 <form role="form">
@@ -161,6 +167,7 @@
   $('a[name="ddmItem"]').click(function(){
       $('#dropMenu').html("Brevet Length: " + $(this).text() + " <span class='caret' />");
       brevetLength = parseInt($(this).text());
+      createEvent();
   });
 
   var getControleTimes = function(dist, tDist, openElem, closeElem) {
@@ -186,8 +193,11 @@
 
           $.post( "/_set_start", {"bStart": date + " " + time, "bLength": brevetLength},
               function(data) { //this function handles the response.
-                  console.log(data.result.reply);
-                  //data.result.matches                  
+                  var msg = data.result.message;
+                  console.log(msg);
+                  if(msg.contains("set")){
+                      sendAlert(msg,"success");
+                  }
               }
           );
 
@@ -198,6 +208,13 @@
   $('input[name="startdatetime"]').keyup(function(){
       createEvent();
   });
+
+  var sendAlert = function(message, type){
+      var htmlcode = "<div class='alert alert-" + type + "'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+      htmlcode = htmlcode + message + "</div>";
+
+      $('div[name="alertContainer"]').html(htmlCode);
+  }
   
 </script>
 
