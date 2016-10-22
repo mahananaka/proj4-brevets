@@ -69,13 +69,20 @@ def set_start():
   try:
     start = arrow.get(request.form["bStart"], "YYYY/MM/DD HH:mm")
   except:
-    replay = "Bad date Time."
+    reply["message"] = "Bad date Time."
     return jsonify(result=reply)
   
+  
+  flask.session["bStart"] = start
+  flask.session["bLength"] = request.form["bLength"]
+  
   brevet = AcpBrevet(request.form["bLength"], start)
-  flask.session["brevet"] = brevet
+  open_limit = brevet.calc_open(0,request.form["bLength"])
+  close_limit = brevet.calc_close(0,request.form["bLength"])
 
-  reply = "Start of event and length set."
+  reply["message"] = "Start of event and length set."
+  reply["open"] = open_limit.format("MMM DD, HH:mm")
+  reply["close"] = open_limit.format("MMM DD, HH:mm")
   return jsonify(result=reply)
 
 @app.route("/_calc_times", methods = ["POST"])
