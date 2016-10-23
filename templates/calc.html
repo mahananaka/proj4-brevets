@@ -31,7 +31,7 @@
 
 
 <h1 class="text-center">ACP Brevet</h1>
-<form role="form">
+<form role="form" method="post" action="{{ url_for('output') }}">
 <div class="container" style="position: absolute; top: 20px; left: 0px; right: 0px; margin-left: auto; margin-right: auto;" name="alertContainer">
 </div>
   <!--
@@ -143,6 +143,7 @@
   </div>
   {% endfor %}
 </div>
+<div><input type="Submit" value="Finish"></div>
 </form>
 
 <script type="text/javascript">

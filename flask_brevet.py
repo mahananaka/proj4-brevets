@@ -46,6 +46,11 @@ def index():
   app.logger.debug("Main page entry")
   return flask.render_template('calc.html')
 
+@app.route("/output", methods=["POST"])
+def output():
+  app.logger.debug("Output page requested")
+  return flask.render_template('output.html',request.form)
+
 
 @app.errorhandler(404)
 def page_not_found(error):
