@@ -29,8 +29,8 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-{% for field in session.pop('controles',[]) %}
-  {{ request.form[field] }}<br>
+{% for field in request.form %}
+  {{ field + " : " + request.form[field] }}<br>
 {% endfor %}
 
 
