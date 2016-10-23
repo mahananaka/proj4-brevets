@@ -49,7 +49,7 @@ def index():
 @app.route("/output", methods=["POST"])
 def output():
   app.logger.debug("Output page requested")
-  return flask.render_template('output.html',request.form)
+  return flask.render_template('output.html')
 
 
 @app.errorhandler(404)
