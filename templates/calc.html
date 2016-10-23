@@ -192,14 +192,11 @@
       createEvent();
 
       if(cControleCount > 3){
-        var controles = $('div[name="controles"]').find("input[name='kilometers']");
+        var kmControles = $('div[name="controles"]').find("input[name='kilometers']");
         console.log(controles);
 
-        for(var i=2;i<22;i++){
-          var kilos = controles[i].find("input[name='kilometers']").val();
-          if(kilos != "Kilometers"){
-            console.log("execute update")
-          }
+        for control in kmControles{
+          console.log(control.val());
         }
       }
   });
