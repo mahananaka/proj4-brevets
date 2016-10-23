@@ -203,7 +203,7 @@
 
                 sendAlert(data.result.message,"success");
 
-                var curCount = int($(source).parents(".row").find("div[name='counter']").html());
+                var curCount = parseInt($(source).parents(".row").find("div[name='counter']").html());
                 if(curCount == (cControleCount-1))
                   displayNextControl();
             }
