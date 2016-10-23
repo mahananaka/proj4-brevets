@@ -70,16 +70,16 @@ def set_start():
   reply = {}
 
   flask.session["bStart"] = request.form["bStart"]
-  
+  bLength = int(request.form["bLength"])
   try:
     start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
   except:
     reply["message"] = "Bad date Time."
     return jsonify(result=reply)
   
-  brevet = AcpBrevet(int(request.form["bLength"]), start)
-  open_limit = brevet.calc_open(0,flask.session["bLength"])
-  close_limit = brevet.calc_close(0,flask.session["bLength"])
+  brevet = AcpBrevet(bLength, start)
+  open_limit = brevet.calc_open(0,bLength)
+  close_limit = brevet.calc_close(0,bLength)
 
   reply["message"] = "Start of event and length set."
   reply["open"] = open_limit.format(dateFormat)
@@ -98,6 +98,7 @@ def calc_times():
   app.logger.debug("Got a JSON calc_time post");
   global dateFormat
   reply = {}
+  bLength = int(request.form["bLength"])
 
   try:
     start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
@@ -105,9 +106,9 @@ def calc_times():
     reply["message"] = "Bad date Time."
     return jsonify(result=reply)
 
-  brevet = AcpBrevet(int(request.form["bLength"]), start)
-  open_limit = brevet.calc_open(int(request.form["dist"]),flask.session["bLength"])
-  close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
+  brevet = AcpBrevet(bLength, start)
+  open_limit = brevet.calc_open(int(request.form["dist"]),bLength)
+  close_limit = brevet.calc_close(int(request.form["dist"]),bLength)
 
   reply["message"] = "Controle added or updated."
   reply["open"] = open_limit.format(dateFormat)
