@@ -49,7 +49,6 @@ def index():
 @app.route("/output", methods=["POST"])
 def output():
   app.logger.debug("Output page requested")
-  flask.session["controles"] = request.form
   return flask.render_template('output.html')
 
 
@@ -76,6 +75,7 @@ def set_start():
   reply = {}
 
   flask.session["bStart"] = request.form["bStart"]
+  flask.session["bLength"] = request.form["bLength"]
   bLength = int(request.form["bLength"])
   try:
     start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
@@ -127,6 +127,29 @@ def calc_times():
 # Functions used within the templates
 #
 #################
+@app.template_filter( 'getOpen' )
+def calc_controle_open( dist ):
+    try:
+        start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
+        bLength = int(flask.session["bLength"])
+        
+        brevet = AcpBrevet(bLength, start)
+        open_limit = brevet.calc_open(int(dist),bLength)
+        return open_limit.format(dateFormat)
+    except:
+        return "(bad date)"
+
+@app.template_filter( 'getClose' )
+def calc_controle_close( dist ):
+    try:
+        start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
+        bLength = int(flask.session["bLength"])
+
+        brevet = AcpBrevet(bLength, start)
+        close_limit = brevet.calc_open(int(dist),bLength)
+        return close_limit.format(dateFormat)
+    except:
+        return "(bad date)"
 
 @app.template_filter( 'fmtdate' )
 def format_arrow_date( date ):
