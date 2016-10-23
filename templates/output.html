@@ -29,19 +29,19 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 <pre>
-{{ session["bLength"] }}km BREVET<br>
-Checkpoint             Date and Time<br>
-====================================<br>
-{{ request.form["location1"] }}<br>
-       0km         start:  {{ 0|getOpen }}<br>
-       0mi         close:  {{ 0|getClose }}<br>
+{{ session["bLength"] }}km BREVET<
+Checkpoint                    Date and Time
+==============================================
+{{ request.form["location1"] }}
+       0km         start:  {{ 0|getOpen }}
+       0mi         close:  {{ 0|getClose }}
 
 {% for i in range(2,21) %}
   {% if request.form["kilometers" + i|string] != "Kilometers" %}
-    {{ request.form["location" + i|string] }}<br>
-           {{ request.form["kilometers" + i|string] }}km         open:   {{ request.form["kilometers" + i|string]|getOpen }}<br>
-           {{ request.form["miles" + i|string] }}mi             close:   {{ request.form["kilometers" + i|string]|getClose }}<br>
-           <br>
+    {{ request.form["location" + i|string] }}
+           {{ request.form["kilometers" + i|string] }}km         open:   {{ request.form["kilometers" + i|string]|getOpen }}
+           {{ request.form["miles" + i|string] }}mi             close:   {{ request.form["kilometers" + i|string]|getClose }}
+           
   {% endif %}
 {% endfor %}
 </pre>
