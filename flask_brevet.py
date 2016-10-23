@@ -49,6 +49,8 @@ def index():
 @app.route("/output", methods=["POST"])
 def output():
   app.logger.debug("Output page requested")
+  request.form["kilometers1"] = "0"
+  request.form["miles1"] = "0";
   return flask.render_template('output.html')
 
 

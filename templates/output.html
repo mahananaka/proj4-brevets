@@ -40,10 +40,10 @@
   <tr>
     <td>{{ request.form["location1"] }}</td>
     <td>0km</td>
-    <td>start: {{ "0"|getOpen }}</td>
+    <td>start: {{ request.form["kilometers1"]|getOpen }}</td>
   </tr>
   <tr>
-    <td></td><td>0mi</td><td>close: {{ "0"|getClose }}</td>
+    <td></td><td>0mi</td><td>close: {{ request.form["kilometers1"]|getClose }}</td>
   </tr>
   {% for i in range(2,21) %}
     {% if request.form["kilometers" + i|string] != "Kilometers" %}
