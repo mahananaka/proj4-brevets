@@ -205,7 +205,6 @@
           kmControles.each(function (index){
             var kms = $(this).val();
               if($.isNumeric(kms)){
-                  console.log("ran on " + kms);
                   getControleTimes(kms,brevetLength,this);
               }
           });
@@ -218,6 +217,7 @@
         function(data) { //this function handles the response.
             if(data.result.message.includes("added")){ //valid open and close times received
                 //display times and alert changes to user
+                console.log($(source).parents(".row").find("p[name='open']").html());
                 $(source).parents(".row").find("p[name='open']").html(data.result.open);
                 $(source).parents(".row").find("p[name='close']").html(data.result.close);
 
