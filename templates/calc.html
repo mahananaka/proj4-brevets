@@ -195,9 +195,9 @@
         var kmControles = $('div[name="controles"]').find("input[name='kilometers']");
         console.log(controles);
 
-        for control in kmControles{
-          console.log(control.val());
-        }
+        kmControles.each(function (index){
+          console.log($(this).val());
+        });
       }
   });
 
