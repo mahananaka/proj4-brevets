@@ -29,9 +29,9 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-{% for i in range(2,request.form|length) %}
+{% for item in request.form %}
 
-  {{ i|string + " : " + request.form[i] }}<br>
+  {{ item }}<br>
 
 {% endfor %}
 
