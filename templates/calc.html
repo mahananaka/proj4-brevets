@@ -153,6 +153,7 @@
   var dateRegex = /^\d{4}\/([0][1-9]|[1][012])\/([0][1-9]|[12][\d]|[3][01])$/; //  YYYY/MM/DD; doesn't stop bad dates like Feb 30
   var timeRegex = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/; //allows only 00:00 to 23:59
   var brevetDistance = /\b\d{3,4}\b/; //gets 3 to 4 integers in the middle of string
+  var number
 
   var KM_PER_MILE = 1.6; //conversion for mi and km
   var brevetLength = 200; //initial value, lowest brevet length
@@ -164,24 +165,27 @@
       $('input[name="miles"]').change(
           function(){
               var miles = $(this).val();
-              var kmInput = $(this).parents(".row").find("input[name='kilometers']");
-              kmInput.val(Math.round(miles*KM_PER_MILE));
+              if($.isNumeric(miles)){
+                  var kmInput = $(this).parents(".row").find("input[name='kilometers']");
+                  kmInput.val(Math.round(miles*KM_PER_MILE));
 
-              //make ajax post
-              getControleTimes(kmInput.val(),brevetLength,this);
+                  //make ajax post
+                  getControleTimes(kmInput.val(),brevetLength,this);
+              }
           });  // End of the change function
 
       //When a field named 'kilometers' is changed
       $('input[name="kilometers"]').change(
           function(){
               var kilometers = $(this).val();
-              var miInput = $(this).parents(".row").find("input[name='miles']");
-              miInput.val(Math.round(kilometers/KM_PER_MILE));
+              if($.isNumeric(kilometers)){
+                  var miInput = $(this).parents(".row").find("input[name='miles']");
+                  miInput.val(Math.round(kilometers/KM_PER_MILE));
 
-              //make ajax post
-              getControleTimes(kilometers,brevetLength,this);
+                  //make ajax post
+                  getControleTimes(kilometers,brevetLength,this);
+              }
           });  // End of the change function
-
   });   // end of what we do on document ready
 
   $('a[name="ddmItem"]').click(function(){
@@ -192,11 +196,15 @@
       createEvent();
 
       if(cControleCount > 3){
-        var kmControles = $('div[name="controles"]').find("input[name='kilometers']");
+          var kmControles = $('div[name="controles"]').find("input[name='kilometers']");
 
-        kmControles.each(function (index){
-          console.log($(this).val());
-        });
+          kmControles.each(function (index){
+            var kms = $(this).val();
+              if($.isNumeric(kms)){
+                  console.log("ran on " + kms);
+                  getControleTimes(kms,brevetLength,this);
+              }
+          });
       }
   });
 
