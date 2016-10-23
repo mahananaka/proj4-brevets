@@ -32,7 +32,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Checkpoint</th><th>Date and Time</th>
+      <th>Checkpoint</th><th>Distance</th><th>Date and Time</th>
     </tr>
   </thead>
   <tbody>
@@ -48,13 +48,13 @@
   {% for i in range(2,21) %}
     {% if request.form["kilometers" + i|string] != "Kilometers" %}
       <tr>
-        <td>{{ request.form["location" + i|string] }}</td>
+        <td>{{ request.form["location" + i|string] }}</td><td></td><td></td>
       </tr>
       <tr>
-        <td>{{ request.form["kilometers" + i|string] }}km</td><td>open: {{ request.form["kilometers" + i|string]|getOpen }}</td>
+        <td></td><td>{{ request.form["kilometers" + i|string] }}km</td><td>open: {{ request.form["kilometers" + i|string]|getOpen }}</td>
       </tr>
       <tr>
-        <td>{{ request.form["miles" + i|string] }}mi</td><td>close: {{ request.form["kilometers" + i|string]|getClose }}</td>
+        <td></td><td>{{ request.form["miles" + i|string] }}mi</td><td>close: {{ request.form["kilometers" + i|string]|getClose }}</td>
       </tr>
     {% endif %}
   {% endfor %}
