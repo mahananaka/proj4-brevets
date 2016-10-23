@@ -31,7 +31,7 @@
 
 {% for item in request.form %}
   {% if item %}
-    {{ item }}
+    {{ item }}{{ item.value }}<br>
   {% endif %}
 {% endfor %}
 
