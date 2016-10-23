@@ -37,10 +37,9 @@
   </thead>
   <tbody>
   <tr>
-    <td>{{ request.form["location1"] }}</td><td></td><td></td>
-  </tr>
-  <tr>
-    <td></td><td>0km</td><td>start: {{ 0|getOpen }}</td>
+    <td>{{ request.form["location1"] }}</td>
+    <td>0km</td>
+    <td>start: {{ 0|getOpen }}</td>
   </tr>
   <tr>
     <td></td><td>0mi</td><td>close: {{ 0|getClose }}</td>
@@ -48,10 +47,7 @@
   {% for i in range(2,21) %}
     {% if request.form["kilometers" + i|string] != "Kilometers" %}
       <tr>
-        <td>{{ request.form["location" + i|string] }}</td><td></td><td></td>
-      </tr>
-      <tr>
-        <td></td><td>{{ request.form["kilometers" + i|string] }}km</td><td>open: {{ request.form["kilometers" + i|string]|getOpen }}</td>
+        <td>{{ request.form["location" + i|string] }}</td><td>{{ request.form["kilometers" + i|string] }}km</td><td>open: {{ request.form["kilometers" + i|string]|getOpen }}</td>
       </tr>
       <tr>
         <td></td><td>{{ request.form["miles" + i|string] }}mi</td><td>close: {{ request.form["kilometers" + i|string]|getClose }}</td>
