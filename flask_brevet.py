@@ -70,15 +70,14 @@ def set_start():
   reply = {}
 
   flask.session["bStart"] = request.form["bStart"]
-  flask.session["bLength"] = int(request.form["bLength"])
-
+  
   try:
     start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
   except:
     reply["message"] = "Bad date Time."
     return jsonify(result=reply)
   
-  brevet = AcpBrevet(request.form["bLength"], start)
+  brevet = AcpBrevet(int(request.form["bLength"]), start)
   open_limit = brevet.calc_open(0,flask.session["bLength"])
   close_limit = brevet.calc_close(0,flask.session["bLength"])
 
@@ -106,7 +105,7 @@ def calc_times():
     reply["message"] = "Bad date Time."
     return jsonify(result=reply)
 
-  brevet = AcpBrevet(flask.session["bLength"], start)
+  brevet = AcpBrevet(int(request.form["bLength"]), start)
   open_limit = brevet.calc_open(int(request.form["dist"]),flask.session["bLength"])
   close_limit = brevet.calc_close(int(request.form["dist"]),flask.session["bLength"])
 

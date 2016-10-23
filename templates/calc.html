@@ -213,7 +213,7 @@
 
   var getControleTimes = function(dist, tDist, source) {
     console.log(tDist);
-    $.post( "/_calc_times", {"dist": dist}, //function to call on server, dict with arguments
+    $.post( "/_calc_times", {"dist": dist, "bLength": brevetLength}, //function to call on server, dict with arguments
         function(data) { //this function handles the response.
             if(data.result.message.includes("added")){ //valid open and close times received
                 //display times and alert changes to user
