@@ -172,6 +172,8 @@
                   //make ajax post
                   getControleTimes(kmInput.val(),brevetLength,this);
               }
+              else
+                sendAlert("Input is not a number","warning");
           });  // End of the change function
 
       //When a field named 'kilometers' is changed
@@ -185,6 +187,8 @@
                   //make ajax post
                   getControleTimes(kilometers,brevetLength,this);
               }
+              else
+                sendAlert("Input is not a number","warning");
           });  // End of the change function
   });   // end of what we do on document ready
 
