@@ -28,23 +28,38 @@
 <body>
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
-<pre>
-{{ session["bLength"] }}km BREVET<
-Checkpoint                    Date and Time
-==============================================
-{{ request.form["location1"] }}
-       0km         start:  {{ 0|getOpen }}
-       0mi         close:  {{ 0|getClose }}
-
-{% for i in range(2,21) %}
-  {% if request.form["kilometers" + i|string] != "Kilometers" %}
-    {{ request.form["location" + i|string] }}
-           {{ request.form["kilometers" + i|string] }}km         open:   {{ request.form["kilometers" + i|string]|getOpen }}
-           {{ request.form["miles" + i|string] }}mi             close:   {{ request.form["kilometers" + i|string]|getClose }}
-           
-  {% endif %}
-{% endfor %}
-</pre>
+<h2>{{ session["bLength"] }}km BREVET</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Checkpoint</th><th>Date and Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{ request.form["location1"] }}</td>
+  </tr>
+  <tr>
+    <td>0km</td><td>start: {{ 0|getOpen }}</td>
+  </tr>
+  <tr>
+    <td>0mi</td><td>close: {{ 0|getClose }}</td>
+  </tr>
+  {% for i in range(2,21) %}
+    {% if request.form["kilometers" + i|string] != "Kilometers" %}
+      <tr>
+        <td>{{ request.form["location" + i|string] }}</td>
+      </tr>
+      <tr>
+        <td>{{ request.form["kilometers" + i|string] }}km</td><td>open: {{ request.form["kilometers" + i|string]|getOpen }}</td>
+      </tr>
+      <tr>
+        <td>{{ request.form["miles" + i|string] }}mi</td><td>close: {{ request.form["kilometers" + i|string]|getClose }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+  </tbody>
+</table>
 
 <script type="text/javascript">
 
