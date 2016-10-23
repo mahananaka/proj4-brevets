@@ -132,7 +132,7 @@ def calc_controle_open( dist ):
     try:
         start = arrow.get(flask.session["bStart"], "YYYY/MM/DD HH:mm")
         bLength = int(flask.session["bLength"])
-        
+
         brevet = AcpBrevet(bLength, start)
         open_limit = brevet.calc_open(int(dist),bLength)
         return open_limit.format(dateFormat)
@@ -146,7 +146,7 @@ def calc_controle_close( dist ):
         bLength = int(flask.session["bLength"])
 
         brevet = AcpBrevet(bLength, start)
-        close_limit = brevet.calc_open(int(dist),bLength)
+        close_limit = brevet.calc_close(int(dist),bLength)
         return close_limit.format(dateFormat)
     except:
         return "(bad date)"
