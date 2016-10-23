@@ -29,7 +29,7 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-{% for i in range(1,20) %}
+{% for i in range(2,20) %}
   {{ request.form["miles" + i|string] + " : " + request.form["kilometers" + i|string] + " : " + request.form["location" + i|string] }}<br>
 {% endfor %}
 
