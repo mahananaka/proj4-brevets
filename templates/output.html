@@ -29,10 +29,8 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-{% for item in request.form %}
-  {% if item %}
-    {{ item }}{{ item.value }}<br>
-  {% endif %}
+{% for item in session.pop('controles',[]) %}
+  {{ item }}
 {% endfor %}
 
 
