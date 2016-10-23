@@ -44,13 +44,12 @@ dateFormat = "YYYY MMM DD HH:mm";
 @app.route("/calc")
 def index():
   app.logger.debug("Main page entry")
+  flask.session["startdist"] = 0
   return flask.render_template('calc.html')
 
 @app.route("/output", methods=["POST"])
 def output():
   app.logger.debug("Output page requested")
-  request.form["kilometers1"] = "0"
-  request.form["miles1"] = "0";
   return flask.render_template('output.html')
 
 
