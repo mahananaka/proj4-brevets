@@ -203,9 +203,9 @@
 
                 sendAlert(data.result.message,"success");
 
-                console.log($(source).parents(".row").find("div[name='counter']").html());
-                console.log(cControleCount);
-                displayNextControl();
+                var curCount = int($(source).parents(".row").find("div[name='counter']").html());
+                if(curCount == (cControleCount-1))
+                  displayNextControl();
             }
             else
               sendAlert(data.result.message,"danger"); //problem let the user know.
