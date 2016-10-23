@@ -191,11 +191,15 @@
       //handles ajax post
       createEvent();
 
-      console.log(cControleCount);
       if(cControleCount > 3){
         var controles = $('div[name="controles"]').children();
-        console.log(controles);
-        console.log(controle[cControleCount]);
+
+        for(var i=2;i<22;i++){
+          var kilos = controles[i].find("input[name='kilometers']").val();
+          if(kilos != "Kilometers"){
+            console.log("execute update")
+          }
+        }
       }
   });
 
