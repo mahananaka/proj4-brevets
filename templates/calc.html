@@ -104,10 +104,10 @@
       <div class="text-center h5">1</div>
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control text-center" name="miles1" value="0" />
+      <input type="text" class="form-control text-center" name="miles1" value="0" disabled/>
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control text-center" name="kilometers1" value="0" />
+      <input type="text" class="form-control text-center" name="kilometers1" value="0" disabled/>
     </div>
     <div class="col-sm-3">
       <input type="text" class="form-control text-center" name="location1" value="Optional" />
@@ -126,13 +126,13 @@
       <div class="text-center h5" name="counter">{{ (loop.index+1) }}</div>
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control text-center" name="miles{{ (loop.index+1) }}" value="Miles"/>
+      <input type="text" class="form-control text-center" name="miles{{ (loop.index+1) }}" value="Miles" diabled/>
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control text-center" name="kilometers{{ (loop.index+1) }}" value="Kilometers"/>
+      <input type="text" class="form-control text-center" name="kilometers{{ (loop.index+1) }}" value="Kilometers" diabled/>
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control text-center" name="location{{ (loop.index+1) }}" value="Optional" />
+      <input type="text" class="form-control text-center" name="location{{ (loop.index+1) }}" value="Optional" disabled/>
     </div>
     <div class="col-sm-2">
       <p class="times text-center" name="open">(Open)</p>
@@ -232,6 +232,7 @@
       if(cControleCount<=21){ //because this is the max amount we have available
           nextChild = $('div[name="controles"]').children().eq(cControleCount);
           nextChild.removeClass("hidden");
+          nextChild.find("input").prop('disabled',false);
           cControleCount++;
       }
       else
