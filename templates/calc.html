@@ -199,16 +199,7 @@
       //handles ajax post
       createEvent();
 
-      if(cControleCount > 3){
-          var kmControles = $('div[name="controles"]').find("input[name='kilometers']");
-
-          kmControles.each(function (index){
-            var kms = $(this).val();
-              if($.isNumeric(kms)){
-                  getControleTimes(kms,brevetLength,this);
-              }
-          });
-      }
+      updateAllControles();
   });
 
   var getControleTimes = function(dist, tDist, source) {
@@ -263,6 +254,8 @@
 
                       if(cControleCount == 2)
                         displayNextControl();
+                      else
+                        updateAllControles();
                   }
                   else
                     sendAlert(msg, "danger"); //problems occurred
@@ -290,6 +283,19 @@
       msgContainer.fadeTo(2000, 500).slideUp(500, function(){
           msgContainer.slideUp(500);
       });
+  }
+
+  var updateAllControles(){
+      if(cControleCount > 3){
+          var kmControles = $('div[name="controles"]').find("input[name='kilometers']");
+
+          kmControles.each(function (index){
+              var kms = $(this).val();
+              if($.isNumeric(kms)){
+                  getControleTimes(kms,brevetLength,this);
+              }
+          });
+      }
   }
   
 </script>
