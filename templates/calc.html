@@ -192,7 +192,8 @@
       createEvent();
 
       if(cControleCount > 3){
-        var controles = $('div[name="controles"]').children();
+        var controles = $('div[name="controles"]').children("input[name='kilometers']");
+        console.log(controles);
 
         for(var i=2;i<22;i++){
           var kilos = controles[i].find("input[name='kilometers']").val();
