@@ -29,8 +29,8 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-{% for field in request.form %}
-  {{ field + " : " + request.form[field] }}<br>
+{% for i in range(2,20) %}
+  {{ request.form["miles"+i] + " : " + request.form["kilometers"+i] + " : " + request.form["location"+i] }}<br>
 {% endfor %}
 
 
