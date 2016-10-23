@@ -166,11 +166,11 @@
   $(document).ready(function(){
    // Do the following when the page is finished loading
       // When a field named 'miles' is changed ...
-      $('input[name="miles"]').change(
+      $('input[name^="miles"]').change(
           function(){
               var miles = $(this).val();
               if($.isNumeric(miles)){
-                  var kmInput = $(this).parents(".row").find("input[name='kilometers']");
+                  var kmInput = $(this).parents(".row").find("input[name^='kilometers']");
                   kmInput.val(Math.round(miles*KM_PER_MILE));
 
                   //make ajax post
@@ -181,11 +181,11 @@
           });  // End of the change function
 
       //When a field named 'kilometers' is changed
-      $('input[name="kilometers"]').change(
+      $('input[name^="kilometers"]').change(
           function(){
               var kilometers = $(this).val();
               if($.isNumeric(kilometers)){
-                  var miInput = $(this).parents(".row").find("input[name='miles']");
+                  var miInput = $(this).parents(".row").find("input[name^='miles']");
                   miInput.val(Math.round(kilometers/KM_PER_MILE));
 
                   //make ajax post
