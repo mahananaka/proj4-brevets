@@ -29,9 +29,9 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-{% for item in request.form %}
+{% for item in request.form|dictsort %}
 
-  {{ item }}<br>
+  {{ item }} : {{ request.form[item] }}<br>
 
 {% endfor %}
 
