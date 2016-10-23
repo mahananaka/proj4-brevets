@@ -7,5 +7,5 @@
  */
 
 tbody tr:nth-child(4n+1), tbody tr:nth-child(4n+2) {
-    background: rgb(209, 209, 224);
+    background: rgb(240, 240, 245);
 }
