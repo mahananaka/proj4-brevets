@@ -29,10 +29,12 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
+{{ request.form["startdate"] + " " + request.form["starttime"]}}<br>
+
 {% for i in range(2,21) %}
-
-  {{ request.form["miles" + i|string] + " : " + request.form["kilometers" + i|string] + " : " + request.form["location" + i|string] }}<br>
-
+  {% if request.form["kilometers" + i|string] != "Kilometers"}
+    {{ request.form["miles" + i|string] + " : " + request.form["kilometers" + i|string] + " : " + request.form["location" + i|string] }}<br>
+  {% endif %}
 {% endfor %}
 
 
