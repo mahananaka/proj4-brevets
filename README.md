@@ -8,7 +8,7 @@ Jared Paeschke, paeschke@cs.uoregon.edu
 ## Overview
 The
 calculator is built using Flask and Jinja2 templating. Arrow was used for proper date
-time calculations. The render html page uses jQuery, Bootstrap, and Ajax to give
+time calculations. The rendered html page uses jQuery, Bootstrap, and Ajax to give
 quick response to the user.
 
 This Brevet Calculator uses the rules for an ACP Brevet. These rules can be located
@@ -32,9 +32,9 @@ However you should have success as long as you have bash and make on your server
 * make run
 
 The program should then sit idle and wait for page requests. The default port is
-port 5000, to get the main page surf to http://< serverip >:5000/ or if you're 
-on the server machine http://localhost:5000/. To stop the program at any time 
-use ctrl+c.
+port 5000, to get the main page surf to 
+http://< serverip >:5000/ or if you're on the server machine http://localhost:5000/. 
+To stop the program at any time use ctrl+c.
 
 ## Tests
 An automated test file was created using nose. If you wish to examine these tests
