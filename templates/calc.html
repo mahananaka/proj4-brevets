@@ -309,6 +309,10 @@
             valid = true;
         }
     });
+
+    if(!valid)
+      sendAlert("Last control must be at least the length of the Brevet","warning");
+    
     return valid;
   }
   
